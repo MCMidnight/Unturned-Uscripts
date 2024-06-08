@@ -1,0 +1,16 @@
+targetLocation = [];
+
+command Hostage(targetPlayerName, targetLocation){ // Define targetPlayerName as a string argument
+  permission = "Hostage";
+  execute(){
+    broadcast("<color=red>[Hostage]<color=red>" + player.name + " is now taking " + targetPlayerName + " Hostage at " + targetLocation);
+    targetLocation = targetLocation;
+  }
+}
+
+command Hostageassist(targetPlayerName){ // Define targetPlayerName as a string argument
+  permission = "Hostageassist";
+  execute(){
+    broadcast("<color=red>[Hostage]<color=red>" + player.name + " is now rob assisting " + targetPlayerName + " at " + targetLocation);
+  }
+}
