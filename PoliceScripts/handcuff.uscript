@@ -1,0 +1,17 @@
+command cuff(targetPlayerName){ // Command = /cuff {targetPlayerName}
+    permission = "cuff"; // Defines permisission needed if not admin
+    execute(){
+        target = toPlayer(targetPlayerName); 
+        target.arrest(); // calls the target(targetPlayerName) to be handcuffed
+        player.message(target.name + " Has Been Cuffed!"); // Telling User that ran the command that the user has been handcuffed
+    }
+}
+ 
+command uncuff(targetPlayerName){ // Command = /uncuff {targetPlayerName}
+    permission = "uncuff"; // Defines permisission needed if not admin
+    execute(){
+        target = toPlayer(targetPlayerName);
+        target.release();  // calls the target(targetPlayerName) to be unhandcuffed
+        player.message(target.name + " Has Been Uncuffed!"); // Telling User that ran the command that the user has been unhandcuffed
+    }
+}

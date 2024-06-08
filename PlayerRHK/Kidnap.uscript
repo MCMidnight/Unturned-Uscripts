@@ -1,16 +1,16 @@
-targetLocation = [];
+targetKLocation = []; // Store Most Recent Kidnap Location
 
-command Kidnap(targetPlayerName, targetLocation){ // Define targetPlayerName as a string argument
-  permission = "Kidnap";
-  execute(){
-    broadcast("<color=red>[Kidnapping]<color=red>" + player.name + " is now kidnapping " + targetPlayerName + " at " + targetLocation);
-    targetLocation = targetLocation;
+command Kidnap(targetPlayerName, targetKLocation){ // Define targetPlayerName, targetKLocation as a string argument
+  permission = "Kidnap"; // Defines permisission needed if not admin
+  execute(){ 
+    broadcast("<color=red>[Kidnapping]<color=red>" + player.name + " is now kidnapping " + targetPlayerName + " at " + targetKLocation);
+    targetKLocation = targetKLocation; // Stores Most Recent Kidnap Location
   }
 }
 
 command Kidnapassist(targetPlayerName){ // Define targetPlayerName as a string argument
-  permission = "Kidnapassist";
+  permission = "Kidnapassist"; // Defines permisission needed if not admin
   execute(){
-    broadcast("<color=red>[Kidnapping]<color=red>" + player.name + " is now rob assisting " + targetPlayerName + " at " + targetLocation);
+    broadcast("<color=red>[Kidnapping]<color=red>" + player.name + " is now rob assisting " + targetPlayerName + " at " + targetKLocation);  // Recalls targetKLocation
   }
 }

@@ -1,16 +1,16 @@
-targetLocation = [];
+targetRLocation = []; // Store Most Recent Rob Location
 
-command Rob(targetPlayerName, targetLocation){ // Define targetPlayerName as a string argument
-  permission = "Rob";
+command Rob(targetPlayerName, targetRLocation){ // Define targetPlayerName, targetRLocation as a string argument
+  permission = "Rob"; // Defines permisission needed if not admin
   execute(){
-    broadcast("<color=red>[Rob]<color=red>" + player.name + " is now robbing " + targetPlayerName + " at " + targetLocation);
-    targetLocation = targetLocation;
+    broadcast("<color=red>[Rob]<color=red>" + player.name + " is now robbing " + targetPlayerName + " at " + targetRLocation);
+    targetRLocation = targetRLocation; // Stores Most Recent Rob Location
   }
 }
 
-command robassist(targetPlayerName){ // Define targetPlayerName as a string argument
-  permission = "robassist";
+command Robassist(targetPlayerName){ // Define targetPlayerName, as a string argument
+  permission = "Robassist"; // Defines permisission needed if not admin
   execute(){
-    broadcast("<color=red>[Rob]<color=red>" + player.name + " is now rob assisting " + targetPlayerName + " at " + targetLocation);
+    broadcast("<color=red>[Rob]<color=red>" + player.name + " is now rob assisting " + targetPlayerName + " at " + targetRLocation); // Recalls targetRLocation
   }
 }
