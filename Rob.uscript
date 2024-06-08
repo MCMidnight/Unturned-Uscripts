@@ -1,0 +1,16 @@
+targetLocation = [];
+
+command Rob(targetPlayerName, targetLocation){ // Define targetPlayerName as a string argument
+  permission = "Rob";
+  execute(){
+    broadcast("<color=red>[Rob]<color=red>" + player.name + " is now robbing " + targetPlayerName + " at " + targetLocation);
+    targetLocation = targetLocation;
+  }
+}
+
+command robassist(targetPlayerName){ // Define targetPlayerName as a string argument
+  permission = "robassist";
+  execute(){
+    broadcast("<color=red>[Rob]<color=red>" + player.name + " is now rob assisting " + targetPlayerName + " at " + targetLocation);
+  }
+}
