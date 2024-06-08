@@ -1,0 +1,16 @@
+targetLocation = [];
+
+command Kidnap(targetPlayerName, targetLocation){ // Define targetPlayerName as a string argument
+  permission = "Kidnap";
+  execute(){
+    broadcast("<color=red>[Kidnapping]<color=red>" + player.name + " is now kidnapping " + targetPlayerName + " at " + targetLocation);
+    targetLocation = targetLocation;
+  }
+}
+
+command Kidnapassist(targetPlayerName){ // Define targetPlayerName as a string argument
+  permission = "Kidnapassist";
+  execute(){
+    broadcast("<color=red>[Kidnapping]<color=red>" + player.name + " is now rob assisting " + targetPlayerName + " at " + targetLocation);
+  }
+}
