@@ -1,0 +1,19 @@
+// SetSpeed For Yourself
+command setspeed(amount){ // Command = /setspeed {amount}
+    permission = "speed"; // Defines permisission needed if not admin
+    execute(){
+        player.speed = amount;
+        player.message(player.name + " Has had there speed increased!"); // Telling User that ran the command that their speed has increase
+    }
+}
+
+//SetSpeed For targets
+command setspeedtarget(targetPlayer, amount){ // Command = /setspeed (PlayerName) (amount)
+    permission = "setspeedtarget"; // Defines permisission needed if not admin
+    execute(){
+        target = toPlayer(targetPlayerName); // Defines Players name as the Target
+        target.speed = amount; // Sets Target Speed to (amount)
+        player.message(target.name + " Has had there speed increased!"); // Telling User that ran the command that their speed has increase
+        target.message(target.name + " You have had your speed increased!"); // Telling Target Player their speed has increase so that they know
+    }
+}

@@ -1,0 +1,10 @@
+// Raid announcer uscript (In Minutes)
+targetRaidLocation = [];
+
+command Raid(targetPlayerName, targetRaidLocation, time){ // Command = /Raid (TargetPlayer) (Location) (Timer(In Minutes))
+  permission = "Raid"; // Defines permisission needed if not admin
+  execute(){
+    broadcast("<color=blue>[Police Raid] <color=blue> " + targetPlayerName + " Has " + time + " Minutes till Police Begin a Raid Warrant On His Property In " + targetRaidLocation);
+    targetRaidLocation = targetRaidLocation; // Stores Raid Location
+  }
+}
