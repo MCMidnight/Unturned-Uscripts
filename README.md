@@ -11,15 +11,15 @@ Permission(s)
   
 ###### **Refund**
 Command(s)
-- 
+- /Refund (PlayerName) (amount) (reason)
 Permission(s)
-- 
+- staff.refund
   
 ###### **Whois**
 Command(s)
-- 
+- /Whois
 Permission(s)
-- 
+- whois
   
 #### **Police UScripts**
 
@@ -31,21 +31,23 @@ Permission(s)
 
 ###### **(Un)cuff**
 Command(s)
-- 
+- /cuff {targetPlayerName}
+- /uncuff {targetPlayerName}
 Permission(s)
-- 
+- cuff
+- uncuff
   
 ###### **Raid Warrant**
 Command(s)
-- 
+- /Raid (TargetPlayer) (Location) (Timer(In Minutes))
 Permission(s)
-- 
+- Raid
 
 ###### **Search Warrant**
 Command(s)
-- 
+- /Search (TargetPlayer) (Location) (Timer(In Minutes))
 Permission(s)
-- 
+- Search
 
 #### **Player UScripts**
 
