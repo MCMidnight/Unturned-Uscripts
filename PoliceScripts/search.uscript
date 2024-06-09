@@ -1,0 +1,10 @@
+// Search Warrant announcer uscript (In Minutes)
+targetRaidLocation = [];
+
+command Search(targetPlayerName, targetRaidLocation, time){ // Command = /Raid (TargetPlayer) (Location) (Timer(In Minutes))
+  permission = "Search"; // Defines permisission needed if not admin
+  execute(){
+    broadcast("<color=blue>[Police Search Warrant] <color=blue> " + targetPlayerName + " Has " + time + " Minutes till Police Begin a Search Warrant On His Property In " + targetRaidLocation);
+    targetRaidLocation = targetRaidLocation; // Stores Raid Location
+  }
+}
