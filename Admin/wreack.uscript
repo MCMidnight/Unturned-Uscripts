@@ -1,5 +1,14 @@
-// Uscript to Destroy Vechicles and to Destroy Structures
 
+event onLoad(){
+    server.log("------------------------------------------");
+    server.log("----------[Wreack Script]-----------------");
+    server.log("-------[Successfully Loaded]--------------");
+    server.log("------[Made By: Midnight_Real]------------");
+    server.log("----[Uscript By: Pluto Uscripts]----------");
+    server.log("------------------------------------------");
+}
+
+// Uscript to Destroy Vechicles and to Destroy Structures
 command wb(){
     permission = "wb";
     execute(){

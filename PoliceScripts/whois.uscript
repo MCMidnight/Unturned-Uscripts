@@ -1,3 +1,13 @@
+
+event onLoad(){
+    server.log("------------------------------------------");
+    server.log("-----------[Whois Script]-----------------");
+    server.log("-------[Successfully Loaded]--------------");
+    server.log("------[Made By: Midnight_Real]------------");
+    server.log("----[Uscript By: Pluto Uscripts]----------");
+    server.log("------------------------------------------");
+}
+
 // WORKS ON BARRICADES AND VECHICLES NAMES Won't SHOW
 command whois(){
     permission = "whois";
