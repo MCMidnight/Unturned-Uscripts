@@ -1,0 +1,22 @@
+// Refund Command for Staff (It Plays the target user in exp)
+command Refund(target, amount, reason){ // Command = /Refund (PlayerName) (amount) (reason)
+    permission =  "staff.refund"; // Defines permisission needed if not admin
+    allowedCaller = "both"; // Allows Both Console and Player with permission to use command
+    execute(){
+        if(arguments.count < 3){ // Checks if command is correctly done so if they did /Refund (Player) (Amount) it would output player.message
+            player.message("Proper Usage | /Refund <Player> <amount> <Reason>"); // Outputing the correct command and format
+            return;
+        }
+        target = toPlayer(target);
+        if(target == null){ // checking if target is online
+            player.message("Player not found!", "red"); // Says that the player isn't found
+            return;
+        }
+         else{
+                amount = amount.toNumber();
+                target.experience = target.experience + amount;
+                player.message(target.name + " has been refunded! The Amount Refunded was: " + amount, "green"); // Saying to the player user that the target user has been fined the amount and the amount they have been paid in the colour green
+                target.message(player.name + " has refunded you! For: " + amount + " For the reason: " + reason, "green"); // Saying to the target user that he/she has been fined the amount in the colour red
+            }
+    }
+}

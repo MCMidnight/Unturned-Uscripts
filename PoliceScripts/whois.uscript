@@ -1,9 +1,18 @@
-// WORKS ONLY ON BARRICADES
-command whois(){ // Command = /whois
-    permission = "whois"; // Defines permisission needed if not admin
+// WORKS ON BARRICADES AND VECHICLES NAMES Won't SHOW
+command whois(){
+    permission = "whois";
     execute() {
-    barricade = player.look.getBarricade(); // Checks if looking at a barricade
-    Player = toPlayer(barricade.owner); // Get barricade Owner
-    player.message("Owner: "+Player.name+"("+barricade.owner+") "+"Group ID: "+barricade.group+" Barricade: "+barricade.itemType); // Outputs and gets data to player who ran the command
+        vehicle = player.look.getVehicle();
+        if(vehicle == null){
+        barricade = player.look.getBarricade();
+            argPlayer = toPlayer(barricade.owner);
+            player.message("Owner: "+argPlayer.name+"("+barricade.owner+") "+"Group ID: "+barricade.group+" Barricade: "+barricade.itemType);
+            return;
+        }
+        else{
+            VPlayer = toPlayer(vehicle.owner);
+            player.message("Owner: "+VPlayer+"("+vehicle.owner+") "+"Group ID: "+vehicle.group+" Vehicle Name: "+vehicle.name);
+            return;
+        }
     }
 }

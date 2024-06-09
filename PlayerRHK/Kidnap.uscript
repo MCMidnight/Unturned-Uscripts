@@ -1,3 +1,13 @@
+
+event onLoad(){
+    server.log("------------------------------------------");
+    server.log("-----[Player Kidnap And Assist]-----------");
+    server.log("-------[Successfully Loaded]--------------");
+    server.log("------[Made By: Midnight_Real]------------");
+    server.log("----[Uscript By: Pluto Uscripts]----------");
+    server.log("------------------------------------------");
+}
+
 targetKLocation = []; // Store Most Recent Kidnap Location
 
 command Kidnap(targetPlayerName, targetKLocation){ // Define targetPlayerName, targetKLocation as a string argument

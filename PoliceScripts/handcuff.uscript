@@ -1,3 +1,15 @@
+
+
+event onLoad(){
+    server.log("------------------------------------");
+    server.log("---------[Police (Un)Cuff]----------");
+    server.log("-------[Successfully Loaded]--------");
+    server.log("------[Made By: Midnight_Real]------");
+    server.log("----[Uscript By: Pluto Uscripts]----");
+    server.log("------------------------------------");
+}
+
+
 command cuff(targetPlayerName){ // Command = /cuff {targetPlayerName}
     permission = "cuff"; // Defines permisission needed if not admin
     execute(){

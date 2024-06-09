@@ -1,0 +1,63 @@
+// Uscript to Destroy Vechicles and to Destroy Structures
+
+command wb(){
+    permission = "wb";
+    execute(){
+        barricade = player.look.getBarricade();
+            barricade.destroy();
+    }
+}
+
+command wv(){
+    permission = "wv";
+    execute(){
+        vehicle = player.look.getVehicle();
+        if(isVehicle(vehicle)){
+            vehicle.destroy();
+        }
+    }
+}
+
+command wreackb(){
+    permission = "wb";
+    execute(){
+        barricade = player.look.getBarricade();
+            barricade.destroy();
+    }
+}
+
+command wreackv(){
+    permission = "wv";
+    execute(){
+        vehicle = player.look.getVehicle();
+        if(isVehicle(vehicle)){
+            vehicle.destroy();
+        }
+    }
+}
+
+command wreackbuild(){
+    permission = "wb";
+    execute(){
+        barricade = player.look.getBarricade();
+            barricade.destroy();
+    }
+}
+
+command wreackbvehicle(){
+    permission = "wv";
+    execute(){
+        vehicle = player.look.getVehicle();
+        if(isVehicle(vehicle)){
+            vehicle.destroy();
+        }
+    }
+}
+
+command wreackbuildable(){
+    permission = "wb";
+    execute(){
+        barricade = player.look.getBarricade();
+            barricade.destroy();
+    }
+}

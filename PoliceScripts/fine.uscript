@@ -1,0 +1,38 @@
+// Fine Command for PD (It Pays the user that runs the command (if you don't want this then use Staff Fine Script))
+
+event onLoad(){
+    server.log("------------------------------------");
+    server.log("-----------[Police Fine]------------");
+    server.log("-------[Successfully Loaded]--------");
+    server.log("------[Made By: Midnight_Real]------");
+    server.log("----[Uscript By: Pluto Uscripts]----");
+    server.log("------------------------------------");
+}
+
+command Fine(target, amount, reason){ // Command = /Fine (PlayerName) (amount) (reason)
+    permission =  "pd.fine"; // Defines permisission needed if not admin
+    allowedCaller = "both"; // Allows Both Console and Player with permission to use command
+    execute(){
+        if(arguments.count < 3){ // Checks if command is correctly done so if they did /Fine (Player) (Amount) it would output player.message
+            player.message("Proper Usage | /Fine <Player> <Fine> <Reason>"); // Outputing the correct command and format
+            return;
+        }
+        target = toPlayer(target);
+        if(target == null){ // checking if target is online
+            player.message("Player not found!", "red"); // Says that the player isn't found
+            return;
+        }
+        else{ // Checks Balance to see if the person has enough money
+            amount = amount.toNumber();
+            if(target.experience < amount){
+                player.message(target.name + " does not have enough money to pay this fine!", "red"); // Saying to the person that ran command that user is broke
+            }
+            else{
+                target.experience = target.experience - amount;
+                player.experience = player.experience + amount;
+                player.message(target.name + " has been fined! You have been paid:" + amount, "green"); // Saying to the player user that the target user has been fined the amount and the amount they have been paid in the colour green
+                target.message(player.name + " has fined you! For:" + amount + " For the reason: " + reason, "red"); // Saying to the target user that he/she has been fined the amount in the colour red
+            }
+        }
+    }
+}
