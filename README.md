@@ -65,25 +65,31 @@ Permission(s)
 #### **Player UScripts**
 
 ###### **Rob and Robassist**
+
 Command(s)
 - /Rob (Player) (Location)
 - /Robassist (Player)
+
 Permission(s)
 - Rob
 - Robassist
 
 ###### **Hostage and Hostageassist**
+
 Command(s)
 - Hostage (Player) (Location)
 - Hostageassist (Player)
+
 Permission(s)
 - Hostage
 - Hostageassist
 
 ###### **Kidnap and Kidnapassist**
+
 Command(s)
 - Kidnap (Player) (Location)
 - Kidnapassist (Player)
+
 Permission(s)
 - Kidnap
 - Kidnapassist
