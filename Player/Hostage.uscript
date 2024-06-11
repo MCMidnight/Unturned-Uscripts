@@ -11,7 +11,7 @@ event onLoad(){
 targetHLocation = []; // Store Most Recent Hostage Location
 
 command Hostage(targetPlayerName, targetHLocation){ // Define targetPlayerName, targetHLocation as a string argument
-  permission = "Hostage"; // Defines permisission needed if not admin
+  permission = "PS.Hostage"; // Defines permisission needed if not admin
   execute(){
     broadcast("<color=red>[Hostage]<color=red>" + player.name + " is now taking " + targetPlayerName + " Hostage at " + targetHLocation);
     targetHLocation = targetHLocation; // Stores Most Recent Hostage Location
@@ -19,7 +19,7 @@ command Hostage(targetPlayerName, targetHLocation){ // Define targetPlayerName, 
 }
 
 command Hostageassist(targetPlayerName){ // Define targetPlayerName as a string argument
-  permission = "Hostageassist"; // Defines permisission needed if not admin
+  permission = "PS.Hostageassist"; // Defines permisission needed if not admin
   execute(){
     broadcast("<color=red>[Hostage]<color=red>" + player.name + " is now Hostage assisting " + targetPlayerName + " at " + targetHLocation); // Recalls targetHLocation
   }

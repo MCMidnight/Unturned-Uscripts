@@ -71,8 +71,8 @@ Command(s)
 - /Robassist (Player)
 
 Permission(s)
-- Rob
-- Robassist
+- PS.Rob
+- PS.Robassist
 
 ###### **Hostage and Hostageassist**
 
@@ -81,8 +81,8 @@ Command(s)
 - Hostageassist (Player)
 
 Permission(s)
-- Hostage
-- Hostageassist
+- PS.Hostage
+- PS.Hostageassist
 
 ###### **Kidnap and Kidnapassist**
 
@@ -91,7 +91,7 @@ Command(s)
 - Kidnapassist (Player)
 
 Permission(s)
-- Kidnap
-- Kidnapassist
+- PS.Kidnap
+- PS.Kidnapassist
 
 #### **Misc UScripts**
