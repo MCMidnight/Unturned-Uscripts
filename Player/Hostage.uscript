@@ -21,6 +21,6 @@ command Hostage(targetPlayerName, targetHLocation){ // Define targetPlayerName, 
 command Hostageassist(targetPlayerName){ // Define targetPlayerName as a string argument
   permission = "Hostageassist"; // Defines permisission needed if not admin
   execute(){
-    broadcast("<color=red>[Hostage]<color=red>" + player.name + " is now rob assisting " + targetPlayerName + " at " + targetHLocation); // Recalls targetHLocation
+    broadcast("<color=red>[Hostage]<color=red>" + player.name + " is now Hostage assisting " + targetPlayerName + " at " + targetHLocation); // Recalls targetHLocation
   }
 }
