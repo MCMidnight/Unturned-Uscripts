@@ -1,0 +1,29 @@
+targetHLocation = []; // Store Most Recent Hostage Location
+hostager = []; // Stores Hostage user command
+
+command Hostage(targetPlayerName, targetHLocation){ // Define targetPlayerName, targetHLocation as a string argument
+  permission = "PS.Hostage"; // Defines permisission needed if not admin
+  execute(){
+        if(arguments.count < 2){ // Checks if command is correctly done so if they did /Hostage (Player) (Location)
+            player.message("Proper Usage | /Hostage (Player) (Location)"); // Outputing the correct command and format
+            return;
+        }
+        hostager = toPlayer(); 
+        targetPlayer = player.name(targetPlayerName);
+        broadcast("<color=red>[Hostage]<color=red>" + player.name + " is now taking " + targetPlayer + " Hostage at " + targetHLocation);
+       targetHLocation = targetHLocation; // Stores Most Recent Hostage Location
+  }
+}
+
+command Hostageassist(){
+  permission = "PS.Hostageassist"; // Defines permisission needed if not admin
+  execute(){
+        if(arguments.count > 0){ // Checks if command is correctly done so if they did /Hostage (Player) (Location)
+            player.message("Proper Usage | /Hostageassist"); // Outputing the correct command and format
+            return;
+        }
+    broadcast("<color=red>[Hostage]<color=red>" + player.name + " is now Hostage assisting " + hostager + " at " + targetHLocation); // Recalls targetHLocation
+  }
+}
+
+

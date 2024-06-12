@@ -78,11 +78,15 @@ Permission(s)
 
 Command(s)
 - Hostage (Player) (Location)
-- Hostageassist (Player)
+- Hostageover
+- Hostageassist
 
 Permission(s)
 - PS.Hostage
 - PS.Hostageassist
+
+Credits
+- tanese - Supporting, Suggesting, Helping - Overall just a W Person
 
 ###### **Kidnap and Kidnapassist**
 
