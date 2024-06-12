@@ -1,0 +1,7 @@
+function onPlayerJoin(player) {
+   playerExistsFlag = 1;
+  if (!getFlag(playerExistsFlag)) {
+    setFlag(playerExistsFlag);
+    broadcast(`Welcome, ${player}! This is your first time playing.`);
+  }
+}
