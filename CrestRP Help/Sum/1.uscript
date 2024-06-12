@@ -1,7 +1,9 @@
 event onPlayerJoined(player) {
+  console.log("player joined")
    playerExistsFlag = 1;
   if (!player.getFlag(playerExistsFlag)) {
     player.setFlag(playerExistsFlag);
+    console.log("flag test")
     broadcast(`Welcome, This is your first time playing.`);
   }
 }
