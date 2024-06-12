@@ -5,9 +5,9 @@ event onPlayerJoined(player) {
     player.setFlag(6901);
     server.log("flag test_1");
     broadcast("Welcome, This is your first time playing. Now Get TO WORK Monk");
-  }
+  };
   else(Player.getFlag(6901) == True){
     server.log("flag test_2");
     broadcast("Welcome, Back Monk.");
-  }
+  };
 }
