@@ -1,12 +1,11 @@
 event onPlayerJoined(player) {
   server.log("player joined")
-   playerExistsFlag = 1;
-  if (!player.getFlag(playerExistsFlag)) {
-    player.setFlag(playerExistsFlag);
+  if (!Player.getFlag(6901)) {
+    player.setFlag(6901);
     server.log("flag test")
-    broadcast(`Welcome, This is your first time playing.`);
+    broadcast("Welcome, This is your first time playing. Now Get TO WORK Monk");
   }
-  else (player.getFlag(playerExistsFlag)){
-
+  else(Player.getFlag(6901) == True){
+    broadcast("Welcome, Back Monk.");
   }
 }
