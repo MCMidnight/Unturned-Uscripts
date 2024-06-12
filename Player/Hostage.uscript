@@ -42,7 +42,7 @@ command Hostage(target, HLocation){
                 Hlocation = Hlocation; // Stores Most Recent Hostage Location
             }
             else{
-                player.message("You need to be atleast " + Hradius + " meters from theplayer to hostage him!", "red");
+                player.message("You need to be atleast " + Hradius + " meters from the player to hostage him!", "red");
             }
         }
     }
@@ -54,7 +54,7 @@ command Hostageover(){
         if(HostageArray.contains(player.id)){
             broadcast(player.name + " has finished their robbery!", "orange");
             Robbing.remove(player.id);
-            Hlocation = null;
+            HLocation.clear();
         }
         else{
             player.message("You are not in a hostage situation!", "red");
@@ -73,6 +73,17 @@ command Hostageassist(){
             player.message("No User hasn't done Hostage (Player)"); // Outputing that command can't used as no hostage active
             return;
           };
-    broadcast("<color=red>[Hostage]<color=red>" + player.name + " is now Hostage assisting " + hostager + " at " + HLocation); // Recalls Hlocation
+          if(Hlocation != null){
+            broadcast("<color=red>[Hostage]<color=red>" + player.name + " is now assisting " + hostager + "taking a hostage at " + HLocation); // Recalls Hlocation
+          }
+      else{
+        player.message("Please Contact Staff | Pluto Uscripts");
+      }
+  }
+}
+
+command PUContact(){
+  execute(){
+    player.message("Contact Pluto Uscripts at our discord: discord.gg/CAyZ9RDWBZ")
   }
 }
