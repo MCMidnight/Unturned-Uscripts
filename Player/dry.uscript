@@ -17,6 +17,15 @@ DiredClearMeth = 49854; // dired blue meth id - must be an item
 
 // This is the onload showing the script has been ran and is loaded
 
+event onLoad(){
+    server.log("------------------------------------------");
+    server.log("-------[Uscript Dry Script]---------------");
+    server.log("-------[Successfully Loaded]--------------");
+    server.log("------[Made By: Midnight_Real]------------");
+    server.log("----[Uscript By: Pluto Uscripts]----------");
+    server.log("------[Credits: tanese - Supporting]------");
+    server.log("------------------------------------------");
+}
 
 // DO NOT TOUCH BELOW THIS LINE - IF YOU DON'T KNOW WHAT YOU ARE DOING
 // THIS CAN BREAK THE SCRIPT AND IT WILL NOT WORK
