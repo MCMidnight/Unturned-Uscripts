@@ -1,0 +1,134 @@
+// This is the config change the IDs to what you want
+
+dryer = 49900; // dryer id - must be a barricade
+UndriedSpice = 49925; // undried spice id - must be an item
+DiredSpice = 49926; // dired spice id - must be an item
+UndriedWeed = 49931; // undried weed id - must be an item
+DiredWeed = 49932; // dired weed id - must be an item
+UndriedCocaine = 49901; // undried cocaine id - must be an item
+DiredCocaine = 49902; // dired cocaine id - must be an item
+UndriedTobacco = 49943; // undried tobacco id - must be an item
+DiredTobacco = 49944; // dired tobacco id - must be an item
+UndriedBlueMeth = 49835; // undried blue meth id - must be an item
+DiredBlueMeth = 49836; // dired blue meth id - must be an item
+UndriedClearMeth = 49853; // undried blue meth id - must be an item
+DiredClearMeth = 49854; // dired blue meth id - must be an item
+
+
+// This is the onload showing the script has been ran and is loaded
+
+
+// DO NOT TOUCH BELOW THIS LINE - IF YOU DON'T KNOW WHAT YOU ARE DOING
+// THIS CAN BREAK THE SCRIPT AND IT WILL NOT WORK
+
+
+command dry(amount){ // Command: /dry (amount)
+    permission = "dry"; // Defines permisission needed if not admin
+    execute(){
+        if(arguments.count > 1){
+            player.message("Proper Usage | /dry (amount)");
+            return;
+        }
+        if(arguments.count == 0){
+            player.message("Proper Usage | /dry (amount)");
+            return;
+        }
+        if(amount < 25){
+            player.message("Woah there buddy, you can't dry that much");
+            return;
+        }
+    barricade = player.look.getBarricade();
+    amount = amount;
+    if (!barricade){
+        player.message("This is not a barricade - dryer is a barricade");
+        return;
+    }
+    if (barricade.id != dryer){
+        player.message("This is not a dryer");
+        return;
+    }
+    if (barricade.id == dryer){
+        if(player.inventory.hasItem(UndriedSpice)){
+          wait.seconds(1, sendMessage, "Drying Spice, Please Wait", player); // wait for 1 second then says it is starting
+          wait.seconds(9, sendMessage, "Done, Drying Spice", player); // wait for 9 second then says it is done
+          while(player.inventory.hasItem(UndriedSpice)){
+            while(amount != 0){
+                amount = amount.toNumber() - 1;
+                player.inventory.removeItem(UndriedSpice);
+                player.inventory.addItem(DiredSpice);
+                    }
+                }
+            }
+        }
+
+        if(player.inventory.hasItem(UndriedWeed)){
+          wait.seconds(1, sendMessage, "Drying Weed, Please Wait", player); // wait for 1 second then says it is starting
+          wait.seconds(9, sendMessage, "Done, Drying Weed", player); // wait for 9 second then says it is done
+          while(player.inventory.hasItem(UndriedWeed)){
+            while(amount != 0){
+                amount = amount.toNumber() - 1;
+                player.inventory.removeItem(UndriedWeed);
+                player.inventory.addItem(DiredWeed);
+                    }
+                }
+        }
+
+        if(player.inventory.hasItem(UndriedTobacco)){
+          wait.seconds(1, sendMessage, "Drying Tobacco, Please Wait", player); // wait for 1 second then says it is starting
+          wait.seconds(9, sendMessage, "Done, Drying Tobacco", player); // wait for 9 second then says it is done
+          while(player.inventory.hasItem(UndriedTobacco)){
+            while(amount != 0){
+                amount = amount.toNumber() - 1;
+                player.inventory.removeItem(UndriedTobacco);
+                player.inventory.addItem(DiredTobacco);
+                    }
+                }
+        }
+
+        if(player.inventory.hasItem(UndriedBlueMeth)){
+          wait.seconds(1, sendMessage, "Drying Blue Meth, Please Wait", player); // wait for 1 second then says it is starting
+          wait.seconds(9, sendMessage, "Done, Drying Blue Meth", player); // wait for 9 second then says it is done
+          while(player.inventory.hasItem(UndriedBlueMeth)){
+            while(amount != 0){
+                amount = amount.toNumber() - 1;
+                player.inventory.removeItem(UndriedBlueMeth);
+                player.inventory.addItem(DiredBlueMeth);
+                    }
+                }
+        }
+
+        if(player.inventory.hasItem(UndriedClearMeth)){
+          wait.seconds(1, sendMessage, "Drying Clear Meth, Please Wait", player); // wait for 1 second then says it is starting
+          wait.seconds(9, sendMessage, "Done, Drying Clear Meth", player); // wait for 9 second then says it is done
+          while(player.inventory.hasItem(UndriedClearMeth)){
+            while(amount != 0){
+                amount = amount.toNumber() - 1;
+                player.inventory.removeItem(UndriedClearMeth);
+                player.inventory.addItem(DiredClearMeth);
+                    }
+                }
+        }
+
+        if(player.inventory.hasItem(UndriedCocaine)){
+          wait.seconds(1, sendMessage, "Drying Cokeane, Please Wait", player); // wait for 1 second then says it is starting
+          wait.seconds(9, sendMessage, "Done, Drying Cokeane", player); // wait for 9 second then says it is done
+          while(player.inventory.hasItem(UndriedCocaine)){
+            while(amount != 0){
+                amount = amount.toNumber() - 1;
+                player.inventory.removeItem(UndriedCocaine);
+                player.inventory.addItem(DiredCocaine);
+                    }
+                }
+        }
+        else {
+            print("No items to dry");
+        }
+    }
+}
+
+// DO NOT TOUCH BELOW THIS LINE
+// THIS CAN BREAK THE SCRIPT AND IT WILL NOT WORK
+
+function sendMessage(message, player){
+    player.message(message);
+}
