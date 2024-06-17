@@ -93,14 +93,14 @@ command ck(){
             argGroup = toPlayer(barricade.group);
             if(GroupName == true){
                 if(ObjectID == true){
-                    player.message("ID: "+barricade.id" "Owner: "+argPlayer.name+ "+Group: "+argGroup.name");
+                    player.message("ID: " + barricade.id + " Owner: " + argPlayer.name + " +Group: " + argGroup.name);
                 }
                 if(ObjectID == false){
-                    player.message("Owner: "+argPlayer.name+ "+Group: "+argGroup.name);
+                    player.message("Owner: " + argPlayer.name + " +Group: " + argGroup.name);
                 }
             }
             if(ObjectID == true){
-                player.message("ID: "+barricade.id" Owner: "+argPlayer.name+)
+                player.message("ID: " + barricade.id + " Owner: " + argPlayer.name);
             }
             else{
                 player.message("Owner: " + argPlayer.name);
@@ -112,14 +112,14 @@ command ck(){
             argGroup = toPlayer(Structure.group);
             if(GroupName == true){
                 if(ObjectID == true){
-                    player.message("ID: "+Structure.id" "Owner: "+argPlayer.name+ "+Group: "+argGroup.name");
+                    player.message("ID: " + Structure.id + " Owner: " + argPlayer.name + " +Group: " + argGroup.name);
                 }
                 if(ObjectID == false){
-                    player.message("Owner: "+argPlayer.name+ "+Group: "+argGroup.name);
+                    player.message("Owner: " + argPlayer.name + " +Group: " + argGroup.name);
                 }
             }
             if(ObjectID == true){
-                player.message("ID: "+Structure.id" Owner: "+argPlayer.name+)
+                player.message("ID: " + Structure.id + " Owner: " + argPlayer.name);
             }
             else{
                 player.message("Owner: " + argPlayer.name);
@@ -132,14 +132,14 @@ command ck(){
             argGroup = toPlayer(Vehicle.group);
             if(GroupName == true){
                 if(ObjectID == true){
-                    player.message("ID: "+Vehicle.id" "Owner: "+argPlayer.name+ "+Group: "+argGroup.name");
+                    player.message("ID: " + Vehicle.id + " Owner: " + argPlayer.name + " +Group: " + argGroup.name);
                 }
                 if(ObjectID == false){
-                    player.message("Owner: "+argPlayer.name+ "+Group: "+argGroup.name);
+                    player.message("Owner: " + argPlayer.name + " +Group: " + argGroup.name);
                 }
             }
             if(ObjectID == true){
-                player.message("ID: "+Vehicle.id" Owner: "+argPlayer.name+)
+                player.message("ID: " + Vehicle.id + " Owner: " + argPlayer.name);
             }
             else{
                 player.message("Owner: " + argPlayer.name);
@@ -148,6 +148,7 @@ command ck(){
         
     }
 }
+
 
 command fine(target, amount, reason){
     permission =  "UPI.fine";
