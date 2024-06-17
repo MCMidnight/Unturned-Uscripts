@@ -1,3 +1,9 @@
+// This is the Configuration file for the UPoliceinspector Script
+
+FinePayout = True
+GroupName = True
+ObjectID = True
+
 
 // This is the onload showing the script has been ran and is loaded
 
@@ -73,6 +79,67 @@ command inspect(){
             player.message("Target Storage Found | Storage Opened");
             barricade.storage.open(player);
             return;
+            }
+        }
+    }
+}
+
+command ck(){
+    permission = "checkowner";
+    execute(){
+        Barricade = player.look.getBarricade();
+        if(Barricade != null){
+            argPlayer = toPlayer(barricade.owner);
+            argGroup = toPlayer(barricade.group);
+            if(GroupName == true){
+                if(ObjectID == true){
+                    player.message("ID: "+barricade.id" "Owner: "+argPlayer.name+ "+Group: "+argGroup.name");
+                }
+                if(ObjectID == false){
+                    player.message("Owner: "+argPlayer.name+ "+Group: "+argGroup.name);
+                }
+            }
+            if(ObjectID == true){
+                player.message("ID: "+barricade.id" Owner: "+argPlayer.name+)
+            }
+            else{
+                player.message("Barricade Owner: " + argPlayer.name);
+            }
+        }
+        Structure = player.look.getStructure();
+        if(Structure != null){}
+            argPlayer = toPlayer(Structure.owner);
+
+        Vehicle = player.look.getVehicle();
+        if(Vehicle != null){}
+            argPlayer = toPlayer(Vehicle.owner);
+    }
+}
+
+command Fine(target, amount, reason){
+    permission =  "pd.fine";
+    execute(){
+        if(arguments.count < 3){
+            player.message("Proper Usage | /Fine <Player> <Fine> <Reason>");
+            return;
+        }
+        target = toPlayer(target);
+        if(target == null){
+            player.message("Player not found!", "red");
+            return;
+        }
+        else{
+            amount = amount.toNumber();
+            if(target.experience < amount){
+                player.message(target.name + " does not have enough money to pay this fine!", "red");
+            }
+            else{
+                target.experience = target.experience - amount;
+                target.message(player.name + " has fined you! For:" + amount + " For the reason: " + reason, "red");
+                if(FinePayout == true){
+                    player.experience = player.experience + amount;
+                    player.message(target.name + " has been fined! You have been paid:" + amount, "green");
+                }
             }
         }
     }
