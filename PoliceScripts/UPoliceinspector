@@ -1,8 +1,8 @@
 // This is the Configuration file for the UPoliceinspector Script
 
-FinePayout = True
-GroupName = True
-ObjectID = True
+FinePayout = True;
+GroupName = True;
+ObjectID = True;
 
 
 // This is the onload showing the script has been ran and is loaded
@@ -149,7 +149,7 @@ command ck(){
     }
 }
 
-command Fine(target, amount, reason){
+command fine(target, amount, reason){
     permission =  "UPI.fine";
     execute(){
         if(arguments.count < 3){
