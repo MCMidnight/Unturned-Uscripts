@@ -85,7 +85,7 @@ command inspect(){
 }
 
 command ck(){
-    permission = "checkowner";
+    permission = "UPI.checkowner";
     execute(){
         Barricade = player.look.getBarricade();
         if(Barricade != null){
@@ -150,7 +150,7 @@ command ck(){
 }
 
 command Fine(target, amount, reason){
-    permission =  "pd.fine";
+    permission =  "UPI.fine";
     execute(){
         if(arguments.count < 3){
             player.message("Proper Usage | /Fine <Player> <Fine> <Reason>");
