@@ -1,10 +1,22 @@
 // This is the Configuration file for the UPoliceinspector Script
 
+
+// Taser Config
 Taser = 15101; // Taser ID
 TaserTime = 5; // Sets the amount of time the player is Tased for
+
+// Fine Config
 FinePayout = True; // Sets if the player gets paid for the Fine
+
+// Whois/CheckOwner Config
 GroupName = True; // Sets if the player gets a group name when they do whois/checkowner (coming soon)
 ObjectID = True; // Sets if the player gets a group name when they do whois/checkowner (coming soon)
+
+// Police Calls Config
+PoliceCall = true; // if true then will let the player call the police if has permission 
+
+// Police Panic Button Config
+PolicePanicButton = true; // if true then will force the police officer to use the panic button when dead
 
 
 // This is the onload showing the script has been ran and is loaded
@@ -147,6 +159,7 @@ command vinspect(){
 
 command slimjim(){
     permission = "UPI.slimjim";
+    Alias = "sj";
     execute(){       
         vehicle = player.look.getVehicle();
         if(vehicle != null) {
@@ -229,4 +242,53 @@ function Trelease(victim)
     victim.speed = 1;
     victim.jumpAcceleration = 1;
     victim.gravity = 1; }
+}
+
+
+// 911/999 Script (Testing Faze)
+
+
+command 911 (callText) {
+    permission = "UPI.call" ; 
+    Alias = "999";
+    execute () {
+        if (PoliceCall == True){
+        callerlocation = player.position;
+        if(arguments.count < 1){
+            player.message("Proper Usage | /999 <text> or /911 <text>");
+            return;
+        }
+        if(arguments.count > 2){
+            player.message("Proper Usage | /999 <text> or /911 <text>");
+            return;
+        }
+        foreach (player in server.players) {
+            call = call;
+            If (player.hasPermission("UPI.Officer")) {
+                player.message ("We need officer to respond to this call");
+                player.message ("call:  " + callText);
+                player.message ("Position has been marked on your GPS");
+                player.setMarker(callerlocation);
+                }
+            }
+        }
+        else{
+            print("Police Line is dead");
+        }
+    }
+}
+
+event onPlayerDeath(victim, killer, cause){
+    if(PolicePanicButton == true){
+        if (victim.hasPermission("UPI.Officer")){
+            painclocation = victim.position;
+            foreach (player in server.players) {
+                If (player.hasPermission("UPI.Officer")) {
+                    player.message ("Officer Painc Button has been set off");
+                    player.message ("Position has been marked on your GPS");
+                    player.setMarker(painclocation);
+                }
+            }
+        }
+    }
 }
