@@ -198,7 +198,7 @@ command PDAnnounce(type, targetPlayerName, targetRaidLocation, time){
 vSet = 0;
 
 event onPlayerDamaged(victim, attacker, cancel, damage, cause, limb) {
-        if(attacker.equipment.item.id == Taser) {
+        if(attacker.equipment.item.id == Taser && attacker.hasPermission = "UPI.Taser";) {
             vSet = 1;
             while (Vset == 1);
                 event onVehicleEnter(vehicle, victim){
