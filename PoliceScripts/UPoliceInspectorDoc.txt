@@ -1,22 +1,22 @@
-**[UPoliceInspector Script]**
+[UPoliceInspector Script]
 
-> **__Features:__**
-> - Made as a replacement of Police Inspector which was on Imperial Plugins (That's why name is called PoliceInspector I just added U because of Uscript)
-> - Cuff/Uncuff Players
-> - Inspect - Opens storages
-> - Door - Opens/Closes Doors
-> - Salvage - Picks up barricade (soon to work on structures)
-> 
-> **__Commands__**
-> - /salvage - Player look cmd (picks up object your looking at)
-> - /door - Player look cmd (Opens or Closes the door your looking at)
-> - /cuff (player name) - arg cmd (cuffs based on player name)
-> - /uncuff (player name) - arg cmd (uncuffs based on player name)
-> - /fine (Player Name) (amount) (reason) - arg cmd (fines player the amount for a reason)
-> - /PDAnnounce <type(Raid/Search)> <targetPlayerName> <targetRaidLocation> <time> - arg cmd 
-> - /slimjim - Player look cmd
-> - /vinspect - Player look cmd
-> - /911  or /999 (Calltext) - Arg cmd
+ **__Features:__**
+ - Made as a replacement of Police Inspector which was on Imperial Plugins (That's why name is called PoliceInspector I just added U because of Uscript)
+ - Cuff/Uncuff Players
+ - Inspect - Opens storages
+ - Door - Opens/Closes Doors
+ - Salvage - Picks up barricade (soon to work on structures)
+ 
+ **__Commands__**
+ - /salvage - Player look command (picks up object your looking at)
+ - /door - Player look command (Opens or Closes the door your looking at)
+ - /cuff (player name) - arg command (cuffs based on player name)
+ - /uncuff (player name) - arg command (uncuffs based on player name)
+ - /fine (Player Name) (amount) (reason) - arg command (fines player the amount for a reason)
+ - /PDAnnounce <type(Raid/Search)> <targetPlayerName> <targetRaidLocation> <time> - arg command 
+ - /slimjim - Player look command
+ - /vinspect - Player look command
+ - /911  or /999 (Calltext) - Arg command
 
 **__Permissions__**
 - UPI.salvage
