@@ -1,1 +1,32 @@
+**[UPoliceInspector Script]**
 
+> **__Features:__**
+> - Made as a replacement of Police Inspector which was on Imperial Plugins (That's why name is called PoliceInspector I just added U because of Uscript)
+> - Cuff/Uncuff Players
+> - Inspect - Opens storages
+> - Door - Opens/Closes Doors
+> - Salvage - Picks up barricade (soon to work on structures)
+> 
+> **__Commands__**
+> - /salvage - Player look cmd (picks up object your looking at)
+> - /door - Player look cmd (Opens or Closes the door your looking at)
+> - /cuff (player name) - arg cmd (cuffs based on player name)
+> - /uncuff (player name) - arg cmd (uncuffs based on player name)
+> - /fine (Player Name) (amount) (reason) - arg cmd (fines player the amount for a reason)
+> - /PDAnnounce <type(Raid/Search)> <targetPlayerName> <targetRaidLocation> <time> - arg cmd 
+> - /slimjim - Player look cmd
+> - /vinspect - Player look cmd
+> - /911  or /999 (Calltext) - Arg cmd
+
+**__Permissions__**
+- UPI.salvage
+- UPI.inspect
+- UPI.door
+- UPI.cuff - Both cuff and uncuff perms
+- UPI.fine - Has a Option (FinePayout if true then police will get exp from fining people(EXP BASED)
+- UPI.Taser - Allows Taser to work if they also have the taser id (Also will be a blacklist item option(if i add it)) (Should Work due to Logic)
+- UPI.PDAnnounce - Allows Police to Announce Search and Raid Warrants (HAS NOT BEEN TESTED(Should Work due to Logic))
+- UPI.slimjim - Allows Police to unlock locked vehicles (HAS NOT BEEN TESTED(Should Work due to Logic))
+- UPI.vinspect - Allows Police to Search Vehicles Storage without unlocking it (HAS NOT BEEN TESTED(may not work due to weird Logic))
+- UPI.Officer - Main Permission for Police (calls for 911 and panic buttons)
+- UPI.call - Civ Permission for Police calls
