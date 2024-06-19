@@ -1,8 +1,10 @@
 // This is the Configuration file for the UPoliceinspector Script
 
-FinePayout = True;
-GroupName = True;
-ObjectID = True;
+Taser = 15101; // Taser ID
+TaserTime = 5; // Sets the amount of time the player is Tased for
+FinePayout = True; // Sets if the player gets paid for the Fine
+GroupName = True; // Sets if the player gets a group name when they do whois/checkowner (coming soon)
+ObjectID = True; // Sets if the player gets a group name when they do whois/checkowner (coming soon)
 
 
 // This is the onload showing the script has been ran and is loaded
@@ -20,6 +22,8 @@ event onLoad(){
 // DO NOT TOUCH BELOW THIS LINE - IF YOU DON'T KNOW WHAT YOU ARE DOING
 // THIS CAN BREAK THE SCRIPT AND IT WILL NOT WORK
 
+// Door Script
+
 command door(){
     permission = "UPI.door";
     execute(){       
@@ -33,6 +37,8 @@ command door(){
         }
     }
 }
+
+// Salvage Script
 
 command salvage(){
     permission = "UPI.salvage";
@@ -52,6 +58,8 @@ command salvage(){
     }
 }
 
+// Cuff Script
+
 command cuff(targetPlayerName){
     permission = "UPI.cuff";
     execute(){
@@ -60,7 +68,9 @@ command cuff(targetPlayerName){
         player.message(target.name + " Has Been Cuffed!");
     }
 }
- 
+
+// Uncuff Script
+
 command uncuff(targetPlayerName){
     permission = "UPI.cuff";
     execute(){
@@ -69,6 +79,8 @@ command uncuff(targetPlayerName){
         player.message(target.name + " Has Been Uncuffed!");
     }
 }
+
+// Inspect Script
 
 command inspect(){
     permission = "UPI.inspect";
@@ -83,6 +95,8 @@ command inspect(){
         }
     }
 }
+
+// Fine Script
 
 command fine(target, amount, reason){
     permission =  "UPI.fine";
@@ -111,4 +125,108 @@ command fine(target, amount, reason){
             }
         }
     }
+}
+
+// Vechicle Inspect Script (Testing Faze)
+
+command vinspect(){
+    permission = "UPI.vinspect";
+    execute(){       
+        vehicle = player.look.getVehicle();
+        if(vehicle != null) {
+        if(vehicle.storage) {
+            player.message("Target Vechicle Storage Found | Vechicle Storage Opened");
+            Vechicle.storage.open(player);
+            return;
+            }
+        }
+    }
+}
+
+// Slimjim Script (Testing Faze)
+
+command slimjim(){
+    permission = "UPI.slimjim";
+    execute(){       
+        vehicle = player.look.getVehicle();
+        if(vehicle != null) {
+        if(vehicle.isLocked != true) {
+            player.message("Target Vechicle Found | Slimjim used Vechicle Unlocked");
+            vehicle.isLocked = 0;
+            return;
+            }
+        player.message("Target Vechicle Found | Slimjim not used due to it being Unlocked")
+        }
+    }
+}
+
+// Police Announcer Script (Testing Faze)
+
+command PDAnnounce(type, targetPlayerName, targetRaidLocation, time){ 
+  permission = "UPI.PDAnnounce";
+  execute(){
+        if(arguments.count < 4){
+            player.message("Proper Usage | /PDAnnounce <type> <targetPlayerName> <targetRaidLocation> <time>");
+            return;
+        }
+        if(arguments.count > 5){
+            player.message("Proper Usage | /PDAnnounce <type> <targetPlayerName> <targetRaidLocation> <time>");
+            return;
+        }
+        if(type =! "Raid" && type =! "Search"){
+            player.message("Proper Usage | /PDAnnounce <type(Raid/Search)> <targetPlayerName> <targetRaidLocation> <time>");
+            return;
+        }
+        targetPlayer = toPlayer(targetPlayerName);
+        if(type == "Raid"){
+            broadcast("<color=blue>[Police Raid] <color=blue> " + targetPlayer.name + " Has " + time + " Minutes till Police Begin a Raid Warrant On His Property In " + targetRaidLocation);
+            targetRaidLocation = targetRaidLocation; // Stores Raid Location (useful later when i add timer (if i do))
+            targetPlayer.name = targetPlayer.name; // Stores Player Name (useful later when i add timer (if i do))
+            return;
+        }
+        if(type == "Search"){
+            broadcast("<color=blue>[Police Search Warrant] <color=blue> " + targetPlayer.name + " Has " + time + " Minutes till Police Begin a Search Warrant On His Property In " + targetRaidLocation);
+            targetRaidLocation = targetRaidLocation; // Stores Raid Location (useful later when i add timer (if i do))
+            targetPlayer.name = targetPlayer.name; // Stores Player Name (useful later when i add timer (if i do))
+            return;
+        }
+  }
+}
+
+// Taser Script (Testing Faze)
+
+vSet = 0;
+
+event onPlayerDamaged(victim, attacker, cancel, damage, cause, limb) {
+        if(attacker.equipment.item.id == Taser) {
+            vSet = 1;
+            while (Vset == 1);
+                event onVehicleEnter(vehicle, victim){
+                    vehicle.removePlayer(victim)
+                }
+            victim.stance = "PRONE";
+            victim.gesture = "SURRENDER_START";
+            victim.speed = 0;
+            victim.jumpAcceleration = 0;
+            victim.gravity = 0;
+            victim.message("<color=0080FF><b>[UPolice]</b><color=FFFFFF> You've been tasered.");
+            attacker.message("<color=0080FF><b>[UPolice]</b><color=FFFFFF> You've tasered <color=0080FF><b>" + victim.name + "</b><color=FFFFFF> .");
+            wait.seconds(TaserTime, Trelease, victim);
+        }
+}
+
+function Trelease(victim)
+{
+   if (vSet = 1);{
+        vSet = 0;
+        victim.release();
+        victim.speed = 1;
+        victim.jumpAcceleration = 1;
+        victim.gravity = 1;
+   }
+   else{
+    victim.release();
+    victim.speed = 1;
+    victim.jumpAcceleration = 1;
+    victim.gravity = 1; }
 }
