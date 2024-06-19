@@ -1,11 +1,20 @@
 [UPoliceInspector Script]
 
+Made by real_midnight on discord
+Please Suggest anything to me via UScript Discord Thread or DMs (Make sure to say its about UPoliceInspector otherwise i may be abit confused)
+
  **__Features:__**
  - Made as a replacement of Police Inspector which was on Imperial Plugins (That's why name is called PoliceInspector I just added U because of Uscript)
  - Cuff/Uncuff Players
  - Inspect - Opens storages
  - Door - Opens/Closes Doors
  - Salvage - Picks up barricade (soon to work on structures)
+ - PDAnnounce - Allows Police to Announce Search and Raid Warrants
+ - Simjim - Allows Police to take vechicles forcefully
+ - Taser - Allows Police to tase people so they can arrest them (Easy configured (TaserID, TaserTime))
+ - Panic Button - Allows Police to let others know where they died and not break NLR (Easy configured to be turned off and on)
+ - 911 or 999 - Allows People to call Police Officers to there location with a reason
+ - Fine - Allows Police to fine players and if configured they can get some money too (Easy configured (Payout true or false))
  
  **__Commands__**
  - /salvage - Player look command (picks up object your looking at)
@@ -25,8 +34,8 @@
 - UPI.cuff - Both cuff and uncuff perms
 - UPI.fine - Has a Option (FinePayout if true then police will get exp from fining people(EXP BASED)
 - UPI.Taser - Allows Taser to work if they also have the taser id (Also will be a blacklist item option(if i add it)) (Should Work due to Logic)
-- UPI.PDAnnounce - Allows Police to Announce Search and Raid Warrants (HAS NOT BEEN TESTED(Should Work due to Logic))
-- UPI.slimjim - Allows Police to unlock locked vehicles (HAS NOT BEEN TESTED(Should Work due to Logic))
+- UPI.PDAnnounce - Allows Police to use PDAnnounce which has 2 types which are Search and Raid Warrants (HAS NOT BEEN TESTED(Should Work due to Logic))
+- UPI.slimjim - Allows Police Officer to unlock locked vehicles (HAS NOT BEEN TESTED(Should Work due to Logic))
 - UPI.vinspect - Allows Police to Search Vehicles Storage without unlocking it (HAS NOT BEEN TESTED(may not work due to weird Logic))
 - UPI.Officer - Main Permission for Police (calls for 911 and panic buttons)
 - UPI.call - Civ Permission for Police calls
