@@ -1,0 +1,61 @@
+command createjail(jailname){ 
+    permission = "jnode.create";
+    Alias = "cj";
+    execute(){
+        if(arguments.count < 1){  // have to find out how to add jail from json file or database
+            player.message("Proper Usage | /createjail <jailname> or /cj <jailname>");
+            return;
+        }
+        if(arguments.count > 1){
+            player.message("Proper Usage | /createjail <jailname> or /cj <jailname>");
+            return;
+        }
+        player.message("Jail Node" + jailname + "Has Been Created!");
+    }
+}
+
+command removejail(jailname){  // have to find out how to remove jail from json file or database
+    permission = "jnode.remove";
+    Alias = "rj";
+    execute(){
+        if(arguments.count < 1){
+            player.message("Proper Usage | /removejail <jailname> or /911 <jailname>");
+            return;
+        }
+        if(arguments.count > 1){
+            player.message("Proper Usage | /removejail <jailname> or /rj <jailname>");
+            return;
+        }
+        player.message("Jail Node" + jailname + "Has Been Removed!");
+    }
+}
+
+command jail(targetplayer, jailname, time, reason){
+    permission = "jnode.jail";
+    alias = "j";
+    execute(){
+        if(arguments.count < 3){
+            player.message("Proper Usage | /jail <playername> <jailname> <time> <reason> or /j <playername> <jailname> <time(minutes)> <reason>");
+            return;
+        }
+        if(arguments.count > 3){
+            player.message("Proper Usage | /jail <playername> <jailname> <time> <reason> or /j <playername> <jailname> <time(minutes)> <reason>");
+            return;
+        }
+        target = toPlayer(target);
+        if(target == null){
+            player.message("Player Not Found!");
+            return;
+        }
+        time = time;
+        player.message("Player" + target + "Has Been Jailed For" + time + "Minutes For" + reason + "!");
+        target.message("You Have Been Jailed For" + time + "Minutes For" + reason + "!");
+        while(time != 0){
+            if(player.position.distance > jail.distance){
+                jaillocation = jail[args]; // Sum have to do it work out the location of the jail sum how
+                player.message("You Have Been Sent Back To Your Cell!");
+                player.teleport(jaillocation);
+            }
+        }
+    }
+}

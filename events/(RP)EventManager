@@ -1,0 +1,93 @@
+event = [];
+seconds = 10;
+
+command eventmanager(action, event){
+    permission = "event.manager";
+    execute(){
+        if(action == "say" or action == "announce" or action == "boardcast"){
+            broadcast("The" + event + "will start soon!");
+        }
+        if(action == "countdown"){
+            broadcast("The" + event + "will start start in" + seconds + "seconds!");
+            while(seconds != 0){
+                wait.seconds(1, broadcast, "The" + event + "will start in" + seconds + "seconds!");
+                seconds = seconds - 1;
+            }
+        }
+        if(action == "start" or action == "go"){
+            broadcast("The" + event + "event has started!");
+        }
+        if(action == "pause"){
+            broadcast("The" + event + "event has paused!");
+        }
+        if(action == "stop" or action == "end"){
+            broadcast("The" + event + "event has started!");
+        }
+    }
+}
+
+command eventcountdown(time){
+    permission = "event.countdown";
+    execute(){
+        seconds = time;
+        player.message("The event time has now been set to" + time + "seconds");
+    }
+}
+
+command eventset(event){
+    permission = "event.set";
+    execute(){
+        if(event == "VIP"){
+            event = "VIP";
+        }
+        if(event == "Protect the President"){
+            event = "Protect the President";
+        }
+        if(event == "Capture The Flag"){
+            event = "Capture The Flag";
+        }
+        if(event == "Protect the outpost"){
+            event = "Protect the outpost";
+        if(event != "VIP" or event != "Protect the President" or event != "Capture The Flag" or event != "Protect the outpost"){
+            player.message("The event has not been set | The event must be one of the following: VIP, Protect the President, Capture The Flag, Protect the outpost");
+        }
+        if(!event){
+            player.message("The event has not been set");
+        }
+        }
+        player.message("The event has been set to" + event)
+    }
+}
+ // VIP Event Function(s) (Start)
+function VIP(){
+    foreach (player in server.players) {
+    if (player.hasPermission("Event.VIP.Tracker")){
+        player.message("heads up your the VIP | Contact Staff if your seeing this (and not the VIP)")
+        while (action == "start"){
+            VIPLocation = player.location
+            player.message("Your location has been revealed.")
+            foreach (player in server.players) {
+                if (player.hasPermission("Event.Player")){
+                    wait.seconds(5, sendMessage, "New Call inbound.", player);
+                    player.message("We saw the VIP at this location.")
+                    player.message("Its been marked for you.")
+                    player.message("There was a delay in getting this information.")
+                    player.setMarker(VIPLocation);
+                }
+            }
+        }
+        while (action == "pause"){
+            server.log("The VIP event has been paused.");
+        }
+        }
+    }
+} // VIP Event Function(s) (End)
+
+function CTF(){} // Capture The Flag Event Function(s)
+function PTP(){} // Protect the President Event Function(s)
+function PTO(){} // Protect the outpost Event Function(s)
+
+// Message Function (Start)
+function sendMessage(message, player){
+    player.message(message);
+} // Message Function (End)

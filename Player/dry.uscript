@@ -17,33 +17,16 @@ DiredClearMeth = 49854; // dired blue meth id - must be an item
 
 // This is the onload showing the script has been ran and is loaded
 
-event onLoad(){
-    server.log("------------------------------------------");
-    server.log("-------[Uscript Dry Script]---------------");
-    server.log("-------[Successfully Loaded]--------------");
-    server.log("------[Made By: Midnight_Real]------------");
-    server.log("----[Uscript By: Pluto Uscripts]----------");
-    server.log("------[Credits: tanese - Supporting]------");
-    server.log("------------------------------------------");
-}
 
 // DO NOT TOUCH BELOW THIS LINE - IF YOU DON'T KNOW WHAT YOU ARE DOING
 // THIS CAN BREAK THE SCRIPT AND IT WILL NOT WORK
 
 
-command dry(amount){ // Command: /dry (amount)
-    permission = "dry"; // Defines permisission needed if not admin
+command admindry(){ // Command: /dry
+    permission = "admin.dry"; // Defines permisission needed if not admin
     execute(){
-        if(arguments.count > 1){
-            player.message("Proper Usage | /dry (amount)");
-            return;
-        }
-        if(arguments.count == 0){
-            player.message("Proper Usage | /dry (amount)");
-            return;
-        }
-        if(amount < 25){
-            player.message("Woah there buddy, you can't dry that much");
+        if(arguments.count > 0){
+            player.message("Proper Usage | /dry");
             return;
         }
     barricade = player.look.getBarricade();
@@ -61,24 +44,17 @@ command dry(amount){ // Command: /dry (amount)
           wait.seconds(1, sendMessage, "Drying Spice, Please Wait", player); // wait for 1 second then says it is starting
           wait.seconds(9, sendMessage, "Done, Drying Spice", player); // wait for 9 second then says it is done
           while(player.inventory.hasItem(UndriedSpice)){
-            while(amount != 0){
-                amount = amount.toNumber() - 1;
                 player.inventory.removeItem(UndriedSpice);
                 player.inventory.addItem(DiredSpice);
                     }
-                }
             }
-        }
 
         if(player.inventory.hasItem(UndriedWeed)){
           wait.seconds(1, sendMessage, "Drying Weed, Please Wait", player); // wait for 1 second then says it is starting
           wait.seconds(9, sendMessage, "Done, Drying Weed", player); // wait for 9 second then says it is done
           while(player.inventory.hasItem(UndriedWeed)){
-            while(amount != 0){
-                amount = amount.toNumber() - 1;
                 player.inventory.removeItem(UndriedWeed);
                 player.inventory.addItem(DiredWeed);
-                    }
                 }
         }
 
@@ -86,11 +62,8 @@ command dry(amount){ // Command: /dry (amount)
           wait.seconds(1, sendMessage, "Drying Tobacco, Please Wait", player); // wait for 1 second then says it is starting
           wait.seconds(9, sendMessage, "Done, Drying Tobacco", player); // wait for 9 second then says it is done
           while(player.inventory.hasItem(UndriedTobacco)){
-            while(amount != 0){
-                amount = amount.toNumber() - 1;
                 player.inventory.removeItem(UndriedTobacco);
                 player.inventory.addItem(DiredTobacco);
-                    }
                 }
         }
 
@@ -98,11 +71,8 @@ command dry(amount){ // Command: /dry (amount)
           wait.seconds(1, sendMessage, "Drying Blue Meth, Please Wait", player); // wait for 1 second then says it is starting
           wait.seconds(9, sendMessage, "Done, Drying Blue Meth", player); // wait for 9 second then says it is done
           while(player.inventory.hasItem(UndriedBlueMeth)){
-            while(amount != 0){
-                amount = amount.toNumber() - 1;
                 player.inventory.removeItem(UndriedBlueMeth);
                 player.inventory.addItem(DiredBlueMeth);
-                    }
                 }
         }
 
@@ -110,11 +80,8 @@ command dry(amount){ // Command: /dry (amount)
           wait.seconds(1, sendMessage, "Drying Clear Meth, Please Wait", player); // wait for 1 second then says it is starting
           wait.seconds(9, sendMessage, "Done, Drying Clear Meth", player); // wait for 9 second then says it is done
           while(player.inventory.hasItem(UndriedClearMeth)){
-            while(amount != 0){
-                amount = amount.toNumber() - 1;
                 player.inventory.removeItem(UndriedClearMeth);
                 player.inventory.addItem(DiredClearMeth);
-                    }
                 }
         }
 
@@ -122,15 +89,10 @@ command dry(amount){ // Command: /dry (amount)
           wait.seconds(1, sendMessage, "Drying Cokeane, Please Wait", player); // wait for 1 second then says it is starting
           wait.seconds(9, sendMessage, "Done, Drying Cokeane", player); // wait for 9 second then says it is done
           while(player.inventory.hasItem(UndriedCocaine)){
-            while(amount != 0){
-                amount = amount.toNumber() - 1;
                 player.inventory.removeItem(UndriedCocaine);
                 player.inventory.addItem(DiredCocaine);
                     }
-                }
         }
-        else {
-            print("No items to dry");
         }
     }
 }

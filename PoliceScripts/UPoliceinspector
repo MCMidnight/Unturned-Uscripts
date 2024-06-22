@@ -168,7 +168,7 @@ command slimjim(){
             vehicle.isLocked = 0;
             return;
             }
-        player.message("Target Vechicle Found | Slimjim not used due to it being Unlocked")
+        player.message("Target Vechicle Found | Slimjim not used due to it being Unlocked");
         }
     }
 }
