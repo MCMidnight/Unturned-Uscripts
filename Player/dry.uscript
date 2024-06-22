@@ -22,8 +22,8 @@ DiredClearMeth = 49854; // dired blue meth id - must be an item
 // THIS CAN BREAK THE SCRIPT AND IT WILL NOT WORK
 
 
-command admindry(){ // Command: /dry
-    permission = "admin.dry"; // Defines permisission needed if not admin
+command dry(){ // Command: /dry
+    permission = "dry"; // Defines permisission needed if not admin
     execute(){
         if(arguments.count > 0){
             player.message("Proper Usage | /dry");
