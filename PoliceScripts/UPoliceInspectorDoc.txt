@@ -17,6 +17,8 @@ Please Suggest anything to me via UScript Discord Thread or DMs (Make sure to sa
  - Panic Button - Allows Police to let others know where they died and not break NLR (Easy configured to be turned off and on)
  - 911 or 999 - Allows People to call Police Officers to there location with a reason
  - Fine - Allows Police to fine players and if configured they can get some money too (Easy configured (Payout true or false))
+ - Salary - Allows Police to get paid - easy and very configable (from my point of view)
+ - Duty - Allows Police to go on duty to get paid but also works with salary on that
  
  **__Commands__**
  - /salvage - Player look command (picks up object your looking at)
@@ -28,6 +30,7 @@ Please Suggest anything to me via UScript Discord Thread or DMs (Make sure to sa
  - /slimjim - Player look command
  - /vinspect - Player look command
  - /911  or /999 (Calltext) - Arg command
+ - /duty or /Duty (action) - Arg command - Actions are (on/off)
 
 **__Permissions__**
 - UPI.salvage
@@ -41,3 +44,9 @@ Please Suggest anything to me via UScript Discord Thread or DMs (Make sure to sa
 - UPI.vinspect - Allows Police to Search Vehicles Storage without unlocking it (HAS NOT BEEN TESTED(may not work due to weird Logic))
 - UPI.Officer - Main Permission for Police (calls for 911 and panic buttons)
 - UPI.call - Civ Permission for Police calls
+- UPI.Salary.Swat - Allows Swat members to get paid
+- UPI.Salary.Police - Allows Police Officers to get paid
+- UPI.Salary.Sheriff (Soon not added but works for duty) - Allows Police Officers to get paid
+- UPI.Duty.Sheriff - Allows Sheriffs to go on duty
+- UPI.Duty.Police - Allows Police Officers to go on duty
+- UPI.Duty.Swat - Allows Swat members to go on duty

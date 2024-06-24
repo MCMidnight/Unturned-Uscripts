@@ -18,6 +18,14 @@ PoliceCall = true; // if true then will let the player call the police if has pe
 // Police Panic Button Config
 PolicePanicButton = true; // if true then will force the police officer to use the panic button when dead
 
+// Salary Config
+
+HasToBeDuty = "false"; // set to true or false if you want it to be duty based (default isn't duty based)
+salary = "true"; // set to true or false to enable or disable the salary system (default is true)
+salaryEXP = "true"; // set to true or false if you want it to be EXP BASED (default is EXP BASED) (DONT SET TO FALSE IF YOU HAVEN'T CONTACTED OWNER FOR ANOTHER VERISON TO BE CHANGED TO YOUR Economy or whatever)
+SalaryInterval = "1200"; // set to a number to set the interval in seconds (default is 20mins)
+PoliceSalary = "1000"; // set to amount you want police to be paid (default is 1k)
+SwatSalary = "2500"; // set to amount you want SWAT to be paid (default is 2.5k)
 
 // This is the onload showing the script has been ran and is loaded
 
@@ -155,7 +163,7 @@ command vinspect(){
     }
 }
 
-// Slimjim Script (Testing Faze)
+// Slimjim Script
 
 command slimjim(){
     permission = "UPI.slimjim";
@@ -245,7 +253,7 @@ function Trelease(victim)
 }
 
 
-// 911/999 Script (Testing Faze)
+// 911/999 Script (Still needs testing)
 
 
 command 911 (callText) {
@@ -288,6 +296,104 @@ event onPlayerDeath(victim, killer, cause){
                     player.message ("Position has been marked on your GPS");
                     player.setMarker(painclocation);
                 }
+            }
+        }
+    }
+}
+
+// Duty Script
+Duty = [];
+
+command Duty (action) {
+    permission = "UPI.duty" ; 
+    Alias = "duty";
+    execute() {
+        if(arguments.count < 1){
+            player.message("Proper Usage | /duty <action> or /Duty <action>");
+            return;
+        }
+        if(arguments.count > 2){
+            player.message("Proper Usage | /duty <action> or /Duty <action>");
+            return;
+        }
+        if (action == "on"){
+            duty.add(player.id)
+            if(player.hasPermission("UPI.Duty.Police")){
+                player.message("You are now Duty as a Police Officer");
+            }
+            if(player.hasPermission("UPI.Duty.Sheriff")){
+                player.message("You are now Duty as a Sheriff");
+            }
+            if(player.hasPermission("UPI.Duty.Swat")){
+                player.message("You are now Duty as a Swat");
+            }
+        }
+        if (action == "off"){
+            if (duty.contains(player.id)){
+                duty.remove(player.id)
+                player.message("You are no longer on Duty");
+            }
+            else{
+                player.message("You are not on Duty");
+            }
+        }
+        if (action != "off" && action != "on"){
+            player.message("Proper Usage | /duty <action> or /Duty <action>")
+            player.message("For examples: '/duty on' or '/duty off'")
+        }
+        else{ // error message
+            player.message("Weird Mhm Why are you seeing this")
+            player.message("Please contact Pluto Uscripts for support")
+            server.log("Weird Mhm Why are you seeing this")
+            server.log("Please contact Pluto Uscripts for support")
+            return;
+        }
+    }
+}
+
+// Salary Script
+event onPlayerJoined(player){
+    if (salary == true){
+        if(player.hasPermission("UPI.Salary.Police")){
+            if(HasToBeDuty == true){
+            while (player.hasPermission("UPI.Salary.Police") && Duty.contains(player.id)){
+                player.message("You have been paid: " + PoliceSalary + "for the role:");
+                player.message("Police Officer");
+                if(salaryEXP == true){
+                    salaryamount == PoliceSalary.toNumber();
+                    player.experience += salaryamount;
+                    }
+                }
+            }
+            while (player.hasPermission("UPI.Salary.Police")){
+                player.message("You have been paid: " + PoliceSalary + "for the role:");
+                player.message("Police Officer");
+                if(salaryEXP == true){
+                    salaryamount == PoliceSalary.toNumber();
+                    player.experience += salaryamount;
+                    }
+                }
+        }
+        if(player.hasPermission("UPI.Salary.Swat")){
+        if(HasToBeDuty == true){
+                if(player.hasPermission("UPI.Salary.Swat") && Duty.contains(player.id)){
+                    while (player.hasPermission("UPI.Salary.Police")){
+                        player.message("You have been paid: " + SwatSalary + "for the role:");
+                        player.message("Swat");
+                        if(salaryEXP == true){
+                            salaryamount == SwatSalary.toNumber();
+                            player.experience += salaryamount;
+                        }
+                    }
+                }
+            }
+            while (player.hasPermission("UPI.Salary.Swat")){
+            player.message("You have been paid: " + SwatSalary + "for the role:");
+            player.message("Swat");
+                if(salaryEXP == true){
+                    salaryamount == SwatSalary.toNumber();
+                    player.experience += salaryamount;
+                    }
             }
         }
     }
