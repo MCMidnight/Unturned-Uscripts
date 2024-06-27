@@ -1,0 +1,503 @@
+Event: onAccuracyUpdated(player)
+Event: onAid(player, target, item, *cancel)
+Event: onAnimalKilled(player)
+Event: onArenaWin(player)
+Event: onBarricadeBuild(player, id, position, *cancel)
+Event: onBarricadeDestroy(player, barricade, *cancel)
+Event: onClothingUpdated(player, item, slot)
+Event: onConsume(player, item, *cancel)
+Event: onEffectButtonClicked(player, buttonName)
+Event: onEffectTextCommitted(player, buttonName, text)
+Event: onFishCaught(player)
+Event: onHeadShot(player)
+Event: onInterval(timeInSeconds) NOTE: You should replace timeInSeconds without the number of seconds you want between each interval
+Event: onLoad()
+Event: onMegaZombieKilled(player)
+Event: onPlantHarvested(player)
+Event: onPlayerChatted(player, message, mode, *color, *cancel)
+Event: onPlayerCrafted(player, itemId, *cancel)
+Event: onPlayerDamaged(victim, killer, *cancel, *damage, cause, limb)
+Event: onPlayerDeath(victim, killer, cause)
+Event: onPlayerEquipped(player, item, *cancel)
+Event: onPlayerExperienceUpdated(player)
+Event: onPlayerGestured(player, gesture)
+Event: onPlayerInventoryAdded(player, item)
+Event: onPlayerInventoryRemoved(player, item)
+Event: onPlayerJoined(player)
+Event: onPlayerQuit(player)
+Event: onPlayerRespawned(player)
+Event: onRockMined(player)
+Event: onSignModify(player, sign, *text, *cancel)
+Event: onStructureBuild(player, id, position, *cancel)
+Event: onStructureDestroy(player, structure, *cancel)
+Event: onTreeChopped(player)
+Event: onUnload()
+Event: onVehicleDamaged(vehicle, player, cause, *damage, *cancel)
+Event: onVehicleEnter(player, vehicle, *cancel)
+Event: onVehicleExit(player, vehicle, *cancel)
+Event: onZombieKilled(player)
+
+Globals:
+    +print(object... arguments)
+    +array(object... arguments) : object [DEPRECATED]
+    +broadcast(object message, [string chatColor], [string url])
+    +isPlayer(object obj) : boolean [DEPRECATED]
+    +isSet(object obj) : boolean [DEPRECATED]
+    +toPlayer(string name_OR_id) : player
+
+Array [Base Type]:
+    +add(object item)
+    +clear()
+    +contains(object item) : boolean
+    +indexOf(object item) : int32
+    +insert(int32 index, object item)
+    +join(string separator) : string
+    +lastIndexOf(object item) : int32
+    +range(int32 startIndex, int32 count) : object
+    +remove(object item) : object
+    +removeAt(int32 index)
+    +skip(int32 count) : object
+    +sort()
+    +sort(int32 index, int32 count)
+    +sortDesc()
+    +sortDesc(int32 index, int32 count)
+    +count               [get]      : int32
+
+barricade [Class]:
+    +damage(uInt16 amount)
+    +destroy()
+    +repair(uInt16 amount)
+    +door                [get]      : door
+    +health              [get]      : uInt16
+    +id                  [get]      : uInt16
+    +instanceId          [get]      : uInt32
+    +itemType            [get]      : string
+    +group               [get/set]  : string
+    +maxHealth           [get]      : uInt16
+    +name                [get]      : string
+    +owner               [get/set]  : string
+    +position            [get]      : vector3
+    +sign                [get]      : sign
+    +storage             [get]      : storage
+
+database [Static Class]:
+    +escape(string text) : string
+    +execute(string query) : object
+    +allRows(string query, object... prepareArgs) : object
+    +firstRow(string query, object... prepareArgs) : object
+    +scalar(string query, object... prepareArgs) : object
+    +nonQuery(string query, object... prepareArgs)
+
+dateTime [Class]:
+    Constructor: dateTime(int32 year, int32 month, int32 day, int32 hour, int32 minute, int32 second, int32 millisecond)
+    +toString([format]) : string
+    +date                [get]      : string
+    +time                [get]      : string
+    +year                [get]      : int32
+    +month               [get]      : int32
+    +day                 [get]      : int32
+    +hour                [get]      : int32
+    +minute              [get]      : int32
+    +second              [get]      : int32
+    +millisecond         [get]      : int32
+    +totalDays           [get]      : double
+    +totalHours          [get]      : double
+    +totalMinutes        [get]      : double
+    +totalSeconds        [get]      : double
+    +totalMilliseconds   [get]      : double
+
+discordEmbed [Class]:
+    Constructor: discordEmbed()
+    Constructor: discordEmbed(string title, string description)
+    +title               [get/set]  : string
+    +description         [get/set]  : string
+    +url                 [get/set]  : string
+    +color               [get/set]  : int32
+    +footer              [get/set]  : embedFooter
+    +image               [get/set]  : embedImage
+    +video               [get/set]  : embedVideo
+    +author              [get/set]  : embedAuthor
+
+discord [Static Class]:
+    +send(string content, string webhookUrl, [string userName], [string avatarUrl])
+    +sendEmbed(string webhookUrl, discordEmbed embed)
+
+door [Class]:
+    +close()
+    +open()
+    +toggle()
+    +barricade           [get]      : barricade
+    +isOpen              [get]      : boolean
+
+effectManager [Static Class]:
+    +clearUIById(uInt16 id, string steamId)
+    +sendUI(uInt16 id, int16 key, string steamId, [object arg0], [object arg1], [object arg2], [object arg3])
+
+embedAuthor [Class]:
+    +name                [get/set]  : string
+    +iconUrl             [get/set]  : string
+
+embedFooter [Class]:
+    +text                [get/set]  : string
+    +iconUrl             [get/set]  : string
+
+embedImage [Class]:
+
+embedVideo [Class]:
+
+file [Static Class]:
+    +append(string path, string text)
+    +appendLine(string path, string text)
+    +read(string path) : string
+    +writeAll(string path, string text)
+
+Function [Base Type]:
+    +Name                [get]      : object
+
+gameGroup [Class]:
+    Constructor: gameGroup(string name)
+    +assign(player player) : boolean
+    +cancelInvite(player player) : boolean
+    +getRank(player player) : string
+    +invite(player player) : boolean
+    +kick(player player, [boolean force]) : boolean
+    +setRank(player player, string rank) : boolean
+    +id                  [get]      : string
+    +memberCount         [get]      : number
+    +name                [get/set]  : string
+    +onlineMembers       [get]      : object
+
+inventory [Class]:
+    +addItem(uInt16 id) : boolean
+    +hasItem(uInt16 id) : boolean
+    +removeItem(uInt16 id) : boolean
+    +items               [get]      : object
+
+item [Class]:
+    +id                  [get]      : uInt16
+    +itemType            [get]      : string
+    +name                [get]      : string
+
+keyValuePair [Class]:
+    +key                 [get/set]  : object
+    +value               [get/set]  : object
+
+logger [Static Class]:
+    +log(string message)
+
+marker [Class]:
+    +set(vector3 position, [string text])
+    +remove()
+    +isSet               [get]      : boolean
+    +position            [get/set]  : vector3
+    +text                [get/set]  : string
+
+map [Class]:
+    Constructor: map()
+    +clear()
+    +containsKey(object key) : boolean
+    +containsValue(object value) : boolean
+    +get(object key) : object
+    +set(object key, object value)
+    +remove(object key) : boolean
+    +count               [get]      : int32
+    +keys                [get]      : object
+    +values              [get]      : object
+
+math [Static Class]:
+    +abs(double value) : double
+    +acos(double d) : double
+    +asin(double d) : double
+    +atan(double d) : double
+    +ceiling(double d) : double
+    +cos(double d) : double
+    +exp(double d) : double
+    +floor(double d) : double
+    +log(double d) : double
+    +max(double x, double y) : double
+    +min(double x, double y) : double
+    +round(double d) : double
+    +sign(double d) : double
+    +sin(double d) : double
+    +sqrt(double d) : double
+    +tan(double d) : double
+    +truncate(double d) : double
+    +pi                  [get]      : double
+
+Number [Base Type]:
+    +isInt() : boolean
+
+Object [Base Type]:
+    +add(object key, object value)
+    +clear()
+    +containsKey(object key) : boolean
+    +containsValue(object value) : boolean
+    +get(object key) : object
+    +remove(object key) : boolean
+    +length              [get]      : int32
+
+player [Class]:
+    +addGroup(string groupId)
+    +arrest()
+    +assignToMainGroup()
+    +ban([string reason], [uInt32 duration], [boolean shouldBanIP])
+    +browserRequest(string message, string url)
+    +damage(single amount)
+    +getData(string key) : object
+    +getFlag(uInt16 key) : int16
+    +give(uInt16 itemId, [byte amount])
+    +hasGroup(string groupName) : boolean
+    +hasPermission(string permission) : boolean
+    +heal()
+    +kick([string reason])
+    +kill()
+    +maxSkills()
+    +message(string message, [string chatColor], [string url])
+    +release()
+    +removeGroup(string groupId)
+    +setData(string key, object value)
+    +setFlag(uInt16 key, int16 value)
+    +sudo(string command)
+    +teleport(vector3 position)
+    +teleport(double x, double y, double z)
+    +arrested            [get]      : boolean
+    +bedPosition         [get]      : vector3
+    +bleeding            [get/set]  : boolean
+    +broken              [get/set]  : boolean
+    +clothing            [get]      : playerClothing
+    +effects             [get]      : playerEffects
+    +equipment           [get]      : playerEquipment
+    +experience          [get/set]  : uInt32
+    +food                [get/set]  : byte
+    +gameGroup           [get]      : gameGroup
+    +gesture             [get/set]  : string
+    +god                 [get/set]  : boolean
+    +groups              [get]      : object
+    +gravity             [get/set]  : single
+    +hasBed              [get]      : boolean
+    +health              [get/set]  : byte
+    +hwid                [get]      : string
+    +id                  [get]      : string
+    +inventory           [get]      : playerInventory
+    +ip                  [get]      : string
+    +isAdmin             [get/set]  : boolean
+    +isGold              [get]      : boolean
+    +isInGameGroup       [get]      : boolean
+    +isInMainGroup       [get]      : boolean
+    +isInVehicle         [get]      : boolean
+    +isMoving            [get]      : boolean
+    +isTalking           [get]      : boolean
+    +jumpAcceleration    [get/set]  : single
+    +look                [get]      : playerLook
+    +marker              [get]      : marker
+    +name                [get/set]  : string
+    +nearestLocation     [get]      : string
+    +ping                [get]      : single
+    +position            [get/set]  : vector3
+    +radioFrequency      [get/set]  : uInt32
+    +reputation          [get/set]  : int32
+    +rotation            [get]      : single
+    +steamGroup          [get/set]  : string
+    +steamProfile        [get]      : playerSteamProfile
+    +speed               [get/set]  : single
+    +stance              [get/set]  : string
+    +vanish              [get/set]  : boolean
+    +virus               [get/set]  : byte
+    +water               [get/set]  : byte
+    +vehicle             [get]      : vehicle
+
+playerClothing [Class]:
+    +clear()
+    +remove()
+    +backpack            [get]      : item
+    +glasses             [get]      : item
+    +hat                 [get]      : item
+    +mask                [get]      : item
+    +pants               [get]      : item
+    +shirt               [get]      : item
+    +vest                [get]      : item
+
+playerEffects [Class]:
+    +hideCursor()
+    +clearUIById(uInt16 id)
+    +sendUI(uInt16 id, int16 key, [object arg0], [object arg1], [object arg2], [object arg3])
+    +sendUIText(int16 key, string childName, string text)
+    +showCursor()
+
+playerEquipment [Class]:
+    +dequip()
+    +item                [get]      : item
+
+playerInventory [Class]:
+    +addItem(uInt16 itemId, [byte amount])
+    +clear()
+    +hasItem(int32 itemId) : boolean
+    +removeItem(uInt16 itemId, [byte amount])
+    +isStoring           [get]      : boolean
+    +items               [get]      : object
+
+playerLook [Class]:
+    +getBarricade() : barricade
+    +getPlayer() : player
+    +getPoint() : vector3
+    +getStructure() : structure
+    +getVehicle() : vehicle
+
+playerSteamProfile [Class]:
+    +avatarUrl           [get]      : string
+    +created             [get]      : dateTime
+    +name                [get]      : string
+    +url                 [get]      : string
+
+random [Class]:
+    Constructor: random()
+    Constructor: random(int32 seed)
+    +int() : int32
+    +int(int32 maxValue) : int32
+    +int(int32 minValue, int32 maxValue) : int32
+    +double() : double
+
+rocketGroup [Class]:
+    +displayName         [get]      : string
+    +id                  [get]      : string
+    +prefix              [get]      : string
+    +suffix              [get]      : string
+
+server [Static Class]:
+    +ban(string steamId, [string reason], [uInt32 duration], [boolean shouldBanIP]) : boolean
+    +clearAllKeyValues()
+    +execute(string command)
+    +findBarricade(uInt32 instanceId) : barricade
+    +findStructure(uInt32 instanceId) : structure
+    +findVehicle(uInt32 instanceId) : vehicle
+    +getBarricadesInRadius(vector3 position, single radius) : object
+    +getGameGroup(string groupId) : gameGroup
+    +getStructuresInRadius(vector3 position, single radius) : object
+    +log(string message)
+    +setBotPlayerCount(int32 numBots)
+    +setGameData(string gameData)
+    +setKeyValue(string key, string value)
+    +unban(string steamId) : boolean
+    +description         [get/set]  : string
+    +ip                  [get]      : string
+    +isDay               [get]      : boolean
+    +isFullMoon          [get]      : boolean
+    +isNight             [get]      : boolean
+    +isRaining           [get]      : boolean
+    +isSnowing           [get]      : boolean
+    +map                 [get/set]  : string
+    +name                [get/set]  : string
+    +players             [get]      : object
+    +port                [get]      : uInt16
+    +time                [get]      : uInt32
+    +vehicles            [get]      : object
+
+sign [Class]:
+    +barricade           [get]      : barricade
+    +text                [get/set]  : string
+
+spawner [Static Class]:
+    +spawnAnimal(uInt16 id, vector3 position, [single angle])
+    +spawnBarricade(uInt16 id, vector3 position, [single angleX], [single angleY], [single angleZ], [string owner], [string group]) : barricade
+    +spawnItem(uInt16 id, vector3 position, [boolean wideSpread])
+    +spawnStructure(uInt16 id, vector3 position, [single angleX], [single angleY], [single angleZ], [string owner], [string group]) : structure
+    +spawnVehicle(uInt16 id, vector3 position, [single angle]) : vehicle
+
+stopwatch[Class]:
+    Constructor: stopwatch()
+    +reset()
+    +start()
+    +stop()
+    +elapsedMilliseconds [get]      : number
+    +elapsedSeconds      [get]      : number
+    +elapsedTicks        [get]      : number
+
+storage [Class]:
+    +open(player player)
+    +barricade           [get]      : barricade
+    +inventory           [get]      : inventory
+    +isOpen              [get]      : boolean
+
+String [Base Type]:
+    +charAt(int32 index) : string
+    +charCodeAt(int32 index) : int32
+    +contains(string value) : boolean
+    +endsWith(string value) : boolean
+    +indexOf(string value) : int32
+    +insert(int32 index, string value) : string
+    +lastIndexOf(string value) : int32
+    +removeRich() : string
+    +replace(string oldValue, string newValue) : string
+    +split(string separator) : object
+    +startsWith(string value) : boolean
+    +substring(int32 startIndex) : string
+    +substring(int32 startIndex, int32 length) : string
+    +toNumber() : object
+    +toUpper() : string
+    +toLower() : string
+    +trim() : string
+    +format(object... arguments) : string
+    +length              [get]      : int32
+
+structure [Class]:
+    +damage(uInt16 amount)
+    +destroy()
+    +repair(uInt16 amount)
+    +health              [get]      : uInt16
+    +id                  [get]      : uInt16
+    +instanceId          [get]      : uInt32
+    +group               [get/set]  : string
+    +maxHealth           [get]      : uInt16
+    +name                [get]      : string
+    +owner               [get/set]  : string
+    +position            [get]      : vector3
+
+time [Static Class]:
+    +now                 [get]      : dateTime
+
+Value [Base Type]:
+    +toString() : string
+    +type                [get]      : string
+
+vector3 [Class]:
+    Constructor: vector3(single x, single y, single z)
+    +distance(vector3 other) : double
+    +toString() : string
+    +x                   [get/set]  : single
+    +y                   [get/set]  : single
+    +z                   [get/set]  : single
+
+vehicle [Class]:
+    +damage(uInt16 amount, boolean canRepair)
+    +destroy()
+    +explode()
+    +popTires()
+    +removePlayer(player player)
+    +repair(uInt16 amount)
+    +repairTires()
+    +driver              [get]      : player
+    +fuel                [get/set]  : uInt16
+    +group               [get/set]  : string
+    +health              [get/set]  : uInt16
+    +id                  [get]      : uInt16
+    +instanceId          [get]      : uInt32
+    +inventory           [get]      : inventory
+    +isDriven            [get]      : boolean
+    +isLocked            [get/set]  : boolean
+    +maxFuel             [get]      : uInt16
+    +maxHealth           [get]      : uInt16
+    +maxSpeed            [get]      : uInt16
+    +minSpeed            [get]      : uInt16
+    +name                [get]      : string
+    +owner               [get/set]  : string
+    +passengers          [get]      : object
+    +position            [get]      : vector3
+    +speed               [get]      : uInt16
+
+wait [Static Class]:
+    +seconds(single seconds, object function, object... arguments)
+
+web [Static Class]:
+    +get(string url) : string
+    +getAsync(string url, object callbackFunction) : string
+
