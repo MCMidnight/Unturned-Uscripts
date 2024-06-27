@@ -1,0 +1,89 @@
+// Config
+
+IgnoreAdmins == false; // Sets if admins can be pick pocketed false means can they be robbed and true means they can't be robbed
+TakeExp true; // set true or false DONT SET BOTH OF THESE FALSE - Takes players exp (if not paid vison will be limited to TakeExp)
+FixedExp = false; // set true or false - This means that won't give random amount will always give this amount if they not broke
+MaxAmount = 5000; // Max the player can pickpocket from a player if exp based
+MinAmount = 1000; // Min the player can pickpocket from a player if exp based
+FixedAmount = 2500; // Fixed Amount players can pickpocket from a player if FixedExp set to true
+Chance = 5; // Means 50/50  if you was to  increas then it would be hard to pickpockets players Such as Chance = 7; means 70:30 Fail:Win
+
+
+// Script Load
+
+event onLoad(){
+    server.log("------------------------------------");
+    server.log("-----------[Pickpocket]-------------");
+    server.log("-------[Successfully Loaded]--------");
+    server.log("------[Made By: Midnight_Real]------");
+    server.log("----[Uscript By: Pluto Scripts]----");
+    server.log("------------------------------------");
+}
+
+// DO NOT TOUCH BELOW THIS LINE - IF YOU DON'T KNOW WHAT YOU ARE DOING
+// THIS CAN BREAK THE SCRIPT AND IT WILL NOT WORK
+
+// Script 
+rand = random();
+random = rand.int(0, 10);
+
+event onPlayerGestured(player, gesture){
+    target = player.look.getPlayer()
+    target = toPlayer(target);
+    if(target == null){
+        player.message("Target Player not found!", "red");
+        return;
+    }
+    if(targethasPermission("PS.ignorepickpocket")){
+        player.message("Target Player has Ignore Permission", "red")
+        player.message("Pickpock rate on this player is 0%", "red")
+    }
+    if(player.hasPermission("PS.pickpocket") and target){
+        if(player.gesture == point){
+            if(target.isAdmin == true and IgnoreAdmins == false){
+            if(random >= chance){
+                if(TakeExp == true){
+                    // Take exp logic
+                    if(FixedExp == true){
+                        if(target.experience <= FixedAmount){
+                            player.message("This player is way to broke", "Red");
+                            return;
+                        }
+                    }
+                    if(target.experience >= FixedAmount){
+                        target.experience = target.experience - FixedAmount;
+                        target.message("You have been pickpocked by " + player.name + "and " + FixedAmount + " was taken.", "red");
+                        player.experience = player.experience + FixedAmount;
+                        player.meassage("You have successfully pickpocked " + target.name + " for the amount: " + FixedAmount, "green");
+                        return;
+                    }
+                    if(target.experience <= MaxAmount){
+                        MaxAmount = MaxAmount / 2
+                        if(target.experience <= MaxAmount){
+                            player.message("This player is way to broke", "Red");
+                            return;
+                        }
+                    }
+                    if(target.experience >= MaxAmount){
+                        RandomAmount = rand.int(MinAmount, MaxAmount);
+                        target.experience = target.experience - RandomAmount;
+                        target.message("You have been pickpocked by " + player.name + "and " + RandomAmount + " was taken.", "red");
+                        player.experience = player.experience + RandomAmount;
+                        player.meassage("You have successfully pickpocked " + target.name + " for the amount: " + RandomAmount, "green");
+                        return;
+                    }
+                }
+                else{
+                    player.message("Config is messed up most likely due to both options being false");
+                    return;
+                }
+            }
+            if(random <= chance){ // fails to pick pocket
+                player.message("failure to pickpocket" + target.name, "red");
+                target.meesage(player.name + "has attemped to pickpocket you", "red");
+                return;
+                }
+            }
+        }
+    }
+}
