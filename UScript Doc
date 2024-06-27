@@ -501,3 +501,84 @@ web [Static Class]:
     +get(string url) : string
     +getAsync(string url, object callbackFunction) : string
 
+
+
+Statements:
+------------------------
+- iteration:
+    - foreach
+    - while
+- selection:
+    - if
+    -else
+--------------------       
+Operators:
+--------------------
+- add
+    - <object> + <object>
+-subtract
+    - <object> - <object>
+- multiply
+    - <object> * <object>
+- divide
+    - <object> / <object>
+- remainder
+    - <object> % <object>
+        
+--------------------------------        
+Comparisons:
+--------------------------------
+- is equals to:
+    - <object> == <object>
+- is not equals to:
+    - <object> != <object>
+- greater than:
+    - <object> > <object>
+- less than:
+    - <object> < <object>
+- greater than or equal:
+    - <object> >= <object>
+- less than or equal:
+    - <object> <= <object>
+    
+--------------------------------        
+Keywords:
+--------------------------------
+- logical:
+    - and
+    - or
+- jump:
+    - break
+    - continue
+    - return
+- modifier:
+    - command
+    - event
+    - function
+- literal:
+    - false
+    - true
+    - null
+--------------------------------        
+Functions:
+--------------------------------
+- conversions: 
+    - toInt(<object>)       [number]    **Note: If it fails, it returns as 0
+    - toNumber(<object>)    [number]    **Note: If it fails, it returns as 0
+    - toPlayer(<object>)    [player]    **Note: If it fails it returns as null.
+    - toString(<object>)    [string]
+    
+- logical:
+    - isPlayer(<object>)    [boolean]
+    - isBarricade(<object>  [boolean]
+    - isInt(<object>)       [boolean]
+    - isStructure(<object>  [boolean]
+    - isSet(<object>)       [boolean]
+    - isVehicle(<object>    [boolean]
+    
+- other-returnable
+    - array([object], [object], ...)    **Note You can get the first index by doing myArray[0]
+    - ban(<steam64ID>, [text], [duration])  [boolean]
+    - unban(<steam64ID>)                    [boolean]
+    - vector3(<x>, <y>, <z>)                [vector3]
+--------------------------------
