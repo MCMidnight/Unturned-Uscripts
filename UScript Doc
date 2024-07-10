@@ -1,41 +1,43 @@
-Event: onAccuracyUpdated(player)
-Event: onAid(player, target, item, *cancel)
-Event: onAnimalKilled(player)
-Event: onArenaWin(player)
-Event: onBarricadeBuild(player, id, position, *cancel)
-Event: onBarricadeDestroy(player, barricade, *cancel)
-Event: onClothingUpdated(player, item, slot)
-Event: onConsume(player, item, *cancel)
-Event: onEffectButtonClicked(player, buttonName)
-Event: onEffectTextCommitted(player, buttonName, text)
-Event: onFishCaught(player)
-Event: onHeadShot(player)
-Event: onInterval(timeInSeconds) NOTE: You should replace timeInSeconds without the number of seconds you want between each interval
-Event: onLoad()
-Event: onMegaZombieKilled(player)
-Event: onPlantHarvested(player)
-Event: onPlayerChatted(player, message, mode, *color, *cancel)
-Event: onPlayerCrafted(player, itemId, *cancel)
-Event: onPlayerDamaged(victim, killer, *cancel, *damage, cause, limb)
-Event: onPlayerDeath(victim, killer, cause)
-Event: onPlayerEquipped(player, item, *cancel)
-Event: onPlayerExperienceUpdated(player)
-Event: onPlayerGestured(player, gesture)
-Event: onPlayerInventoryAdded(player, item)
-Event: onPlayerInventoryRemoved(player, item)
-Event: onPlayerJoined(player)
-Event: onPlayerQuit(player)
-Event: onPlayerRespawned(player)
-Event: onRockMined(player)
-Event: onSignModify(player, sign, *text, *cancel)
-Event: onStructureBuild(player, id, position, *cancel)
-Event: onStructureDestroy(player, structure, *cancel)
-Event: onTreeChopped(player)
-Event: onUnload()
-Event: onVehicleDamaged(vehicle, player, cause, *damage, *cancel)
-Event: onVehicleEnter(player, vehicle, *cancel)
-Event: onVehicleExit(player, vehicle, *cancel)
-Event: onZombieKilled(player)
+Events:
+
+event onAccuracyUpdated(player)
+event onAid(player, target, item, *cancel)
+event onAnimalKilled(player)
+event onArenaWin(player)
+event onBarricadeBuild(player, id, position, *cancel)
+event onBarricadeDestroy(player, barricade, *cancel)
+event onClothingUpdated(player, item, slot)
+event onConsume(player, item, *cancel)
+event onEffectButtonClicked(player, buttonName)
+event onEffectTextCommitted(player, buttonName, text)
+event onFishCaught(player)
+event onHeadShot(player)
+event onInterval(timeInSeconds) NOTE: You should replace timeInSeconds without the number of seconds you want between each interval
+event onLoad()
+event onMegaZombieKilled(player)
+event onPlantHarvested(player)
+event onPlayerChatted(player, message, mode, *color, *cancel)
+event onPlayerCrafted(player, itemId, *cancel)
+event onPlayerDamaged(victim, killer, *cancel, *damage, cause, limb)
+event onPlayerDeath(victim, killer, cause)
+event onPlayerEquipped(player, item, *cancel)
+event onPlayerExperienceUpdated(player)
+event onPlayerGestured(player, gesture)
+event onPlayerInventoryAdded(player, item)
+event onPlayerInventoryRemoved(player, item)
+event onPlayerJoined(player)
+event onPlayerQuit(player)
+event onPlayerRespawned(player)
+event onRockMined(player)
+event onSignModify(player, sign, *text, *cancel)
+event onStructureBuild(player, id, position, *cancel)
+event onStructureDestroy(player, structure, *cancel)
+event onTreeChopped(player)
+event onUnload()
+event onVehicleDamaged(vehicle, player, cause, *damage, *cancel)
+event onVehicleEnter(player, vehicle, *cancel)
+event onVehicleExit(player, vehicle, *cancel)
+event onZombieKilled(player)
 
 Globals:
     +print(object... arguments)
@@ -128,6 +130,20 @@ door [Class]:
     +toggle()
     +barricade           [get]      : barricade
     +isOpen              [get]      : boolean
+
+door.barricade [Sub-Class]:
+    +damage(uInt16 amount)
+    +destroy()
+    +repair(uInt16 amount)
+    +health              [get]      : uInt16
+    +id                  [get]      : uInt16
+    +instanceId          [get]      : uInt32
+    +itemType            [get]      : string
+    +group               [get/set]  : string
+    +maxHealth           [get]      : uInt16
+    +name                [get]      : string
+    +owner               [get/set]  : string
+    +position            [get]      : vector3
 
 effectManager [Static Class]:
     +clearUIById(uInt16 id, string steamId)
@@ -306,7 +322,7 @@ player [Class]:
     +water               [get/set]  : byte
     +vehicle             [get]      : vehicle
 
-playerClothing [Class]:
+player.clothing [Sub-Class]:
     +clear()
     +remove()
     +backpack            [get]      : item
@@ -317,18 +333,18 @@ playerClothing [Class]:
     +shirt               [get]      : item
     +vest                [get]      : item
 
-playerEffects [Class]:
+player.effects [Sub-Class]:
     +hideCursor()
     +clearUIById(uInt16 id)
     +sendUI(uInt16 id, int16 key, [object arg0], [object arg1], [object arg2], [object arg3])
     +sendUIText(int16 key, string childName, string text)
     +showCursor()
 
-playerEquipment [Class]:
+player.equipment [Sub-Class]:
     +dequip()
     +item                [get]      : item
 
-playerInventory [Class]:
+player.inventory [Sub-Class]:
     +addItem(uInt16 itemId, [byte amount])
     +clear()
     +hasItem(int32 itemId) : boolean
@@ -336,14 +352,14 @@ playerInventory [Class]:
     +isStoring           [get]      : boolean
     +items               [get]      : object
 
-playerLook [Class]:
+player.look [Sub-Class]:
     +getBarricade() : barricade
     +getPlayer() : player
     +getPoint() : vector3
     +getStructure() : structure
     +getVehicle() : vehicle
 
-playerSteamProfile [Class]:
+player.steamProfile [Sub-Class]:
     +avatarUrl           [get]      : string
     +created             [get]      : dateTime
     +name                [get]      : string
@@ -396,6 +412,20 @@ sign [Class]:
     +barricade           [get]      : barricade
     +text                [get/set]  : string
 
+sign.barricade [Sub-Class]:
+    +damage(uInt16 amount)
+    +destroy()
+    +repair(uInt16 amount)
+    +health              [get]      : uInt16
+    +id                  [get]      : uInt16
+    +instanceId          [get]      : uInt32
+    +itemType            [get]      : string
+    +group               [get/set]  : string
+    +maxHealth           [get]      : uInt16
+    +name                [get]      : string
+    +owner               [get/set]  : string
+    +position            [get]      : vector3
+
 spawner [Static Class]:
     +spawnAnimal(uInt16 id, vector3 position, [single angle])
     +spawnBarricade(uInt16 id, vector3 position, [single angleX], [single angleY], [single angleZ], [string owner], [string group]) : barricade
@@ -417,6 +447,27 @@ storage [Class]:
     +barricade           [get]      : barricade
     +inventory           [get]      : inventory
     +isOpen              [get]      : boolean
+
+storage.inventory [Sub-Class]:
+    +addItem(uInt16 id) : boolean
+    +hasItem(uInt16 id) : boolean
+    +removeItem(uInt16 id) : boolean
+    +items               [get]      : object
+
+storage.barricade [Sub-Class]:
+    +damage(uInt16 amount)
+    +destroy()
+    +repair(uInt16 amount)
+    +health              [get]      : uInt16
+    +id                  [get]      : uInt16
+    +instanceId          [get]      : uInt32
+    +itemType            [get]      : string
+    +group               [get/set]  : string
+    +maxHealth           [get]      : uInt16
+    +name                [get]      : string
+    +owner               [get/set]  : string
+    +position            [get]      : vector3
+
 
 String [Base Type]:
     +charAt(int32 index) : string
